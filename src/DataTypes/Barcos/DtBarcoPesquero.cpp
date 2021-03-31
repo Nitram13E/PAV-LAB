@@ -1,4 +1,4 @@
-#include "../header/Barcos/BarcoPesquero.h"
+#include "../header/Barcos/DtBarcoPesquero.h"
 
 DtBarcoPesquero::DtBarcoPesquero(){}
 

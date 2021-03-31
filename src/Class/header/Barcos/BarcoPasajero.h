@@ -2,17 +2,17 @@
 #define BARCOPASAJERO
 
 #include "../Barco.h"
-#include "../TipoTamanio.h"
+#include "../../DataTypes/header/TipoTamanio.h"
 
-class DtBarcoPasajero : public DtBarco
+class BarcoPasajero : public Barco
 {
     private:
         int cantPasajeros;
         TipoTamanio tamanio;
 
     public:
-        DtBarcoPasajero();
-        DtBarcoPasajero(std::string id, std::string nombre, int cantPasajeros, TipoTamanio tamanio);
+        BarcoPasajero();
+        BarcoPasajero(std::string id, std::string nombre, int cantPasajeros, TipoTamanio tamanio);
 
         void setCantPasajeros(int);
         int getCantPasajeros();

@@ -6,23 +6,24 @@
 #include <ostream>
 #include <string>
 
-#include "Fecha.h"
+#include "../DataTypes/header/DtFecha.h"
 #include "Arribo.h"
 
-class DtPuerto
+class Puerto
 {
     private:
         std::string id;
         std::string nombre;
         DtFecha fechaCreacion;
+
+        //Pseudo atributos
+        Arribo *arribos[MAX_ARRIBO];
         int cantArribos;
-        
-        DtArribo *arribos;
-         
+
     public:
-        DtPuerto();
-        DtPuerto(std::string, std::string, DtFecha);
-        ~DtPuerto();
+        Puerto();
+        Puerto(std::string, std::string, DtFecha);
+        ~Puerto();
 
         void setId(std::string);
         std::string getId();
