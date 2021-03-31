@@ -1,16 +1,13 @@
-#include "header/Puerto.h"
-
+#include "header/DtPuerto.h"
 
 DtPuerto::DtPuerto(){}
         
-DtPuerto::DtPuerto(std::string id, std::string nombre, DtFecha fechaCreacion)
+DtPuerto::DtPuerto(std::string id, std::string nombre, DtFecha fechaCreacion, int cantArribos)
 {
     this -> id = id;
     this -> nombre = nombre;
     this -> fechaCreacion = fechaCreacion;
-    this -> cantArribos = CANT_ARRIBOS;
-
-    this -> arribos = new DtArribo[MAX_ARRIBO];
+    this -> cantArribos = cantArribos;
 }
 
 DtPuerto::~DtPuerto()

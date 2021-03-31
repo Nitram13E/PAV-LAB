@@ -1,4 +1,5 @@
-#include "header/Barco.h"
+
+#include "header/DtBarco.h"
 
 DtBarco::DtBarco(){}
 

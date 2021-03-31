@@ -4,13 +4,4 @@
 enum TipoTamanio{bote, crucero, galeon, transatlantico};
 
 
-
-
-
-
-
-
-
-
-
 #endif
