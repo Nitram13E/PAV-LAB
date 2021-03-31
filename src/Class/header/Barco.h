@@ -3,16 +3,16 @@
 
 #include <string>
 
-class DtBarco
+class Barco
 {
 private:
     std::string id;
     std::string nombre;
 
 public:
-    DtBarco();
-    DtBarco(std::string, std::string);
-    ~DtBarco();
+    Barco();
+    Barco(std::string, std::string);
+    ~Barco();
 
     void setId(std::string);
     std::string getId();
