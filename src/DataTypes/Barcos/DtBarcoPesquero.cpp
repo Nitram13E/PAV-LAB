@@ -30,7 +30,15 @@ int DtBarcoPesquero::getCarga()
     return this -> carga;
 }
 
-void DtBarcoPesquero::arribar(float)
+std::ostream& operator << (std::ostream& salida, DtBarcoPesquero pesquero)
 {
-    
+    std::cout << (DtBarco) pesquero;
+
+    std::cout << "- Tipo de barco: Barco pesquero" << std::endl;
+
+    std::cout << "- Capacidad: " << pesquero.getCapacidad() << std::endl;
+
+    std::cout << "- Carga: " << pesquero.getCarga() << std::endl;
+
+    return salida;
 }
