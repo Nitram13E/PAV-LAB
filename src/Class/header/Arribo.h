@@ -1,19 +1,19 @@
 #ifndef ARRIBO
 #define ARRIBO
 
-#include "Fecha.h"
+#include "../DataTypes/header/DtFecha.h"
 #include "Barco.h"
 
-class DtArribo
+class Arribo
 {
     private:
         DtFecha fecha;
         float carga;
-        DtBarco *barco;
+        Barco *barco;
 
     public:
-        DtArribo();
-        DtArribo(DtFecha, float, DtBarco*);
+        Arribo();
+        Arribo(DtFecha, float, Barco*);
         
         void setFecha(DtFecha);
         DtFecha getFecha();
@@ -22,10 +22,10 @@ class DtArribo
         void setCarga(float);
         float getCarga(); 
 
-        void setBarco(DtBarco*);
-        DtBarco* getBarco();
+        void setBarco(Barco*);
+        Barco* getBarco();
 
-        ~DtArribo();
+        ~Arribo();
 };
 
 #endif
