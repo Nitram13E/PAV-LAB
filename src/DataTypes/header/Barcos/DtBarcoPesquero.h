@@ -1,7 +1,7 @@
-#ifndef BARCOPESQUERO
-#define BARCOPESQUERO
+#ifndef DTBARCOPESQUERO
+#define DTBARCOPESQUERO
 
-#include "../Barco.h"
+#include "../DtBarco.h"
 
 class DtBarcoPesquero : public DtBarco
 {
@@ -18,9 +18,6 @@ class DtBarcoPesquero : public DtBarco
 
         void setCarga(int);
         int getCarga();
-
-        void arribar(float);
 };
-
 
 #endif
