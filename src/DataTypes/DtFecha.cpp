@@ -1,8 +1,6 @@
-#include "header/Fecha.h"
+#include "header/DtFecha.h"
 
-DtFecha::DtFecha()
-{
-}
+DtFecha::DtFecha(){}
 
 DtFecha::DtFecha(int dia, int mes, int anio)
 {

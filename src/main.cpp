@@ -1,15 +1,11 @@
-#include "header/Arribo.h"
-#include "header/Barco.h"
-#include "header/Fecha.h"
-#include "header/Puerto.h"
-#include "header/TipoTamanio.h"
-#include "header/Barcos/BarcoPasajero.h"
-#include "header/Barcos/BarcoPesquero.h"
-
+#include "main.h"
 
 int main()
 {
+    BarcoPasajero * pas = new BarcoPasajero();
 
-    std::cout << "hi" << std::endl;
+    BarcoPesquero * pesq = new BarcoPesquero();
+    
+
     return 0;
 }

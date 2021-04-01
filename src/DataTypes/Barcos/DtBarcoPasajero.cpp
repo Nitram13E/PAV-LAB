@@ -1,4 +1,4 @@
-#include "../header/Barcos/BarcoPasajero.h"
+#include "../header/Barcos/DtBarcoPasajero.h"
 
 DtBarcoPasajero::DtBarcoPasajero(){}
 
@@ -30,18 +30,15 @@ TipoTamanio DtBarcoPasajero::getTamanio()
     return this -> tamanio;
 }
 
-void DtBarcoPasajero::arribar(float cargaDespacho)
+std::ostream& operator << (std::ostream& salida, DtBarcoPasajero pasajero)
 {
-    
+    std::cout << (DtBarco) pasajero;
+
+    std::cout << "- Tipo de barco: Barco pasajero" << std::endl;
+
+    std::cout << "- Cantidad de pasajeros: " << pasajero.getCantPasajeros() << std::endl;
+
+    std:: cout << "- Tamanio: " << pasajero.getTamanio() << std::endl;
+
+    return salida;
 }
-
-// ostream& operator <<(ostream& salida,DtTerrestre& terrestre){
-//   cout << (DtLugar) terrestre << " Pais: " << terrestre.pais << endl;
-//   return salida;
-// }
-
-// ostream& operator << (ostream& salida, const DtLugar& lugar){
-//   string g[7]={"ALMA","ESPACIO","MENTE","REALIDAD","TIEMPO","PODER","NINGUNA"};
-//   cout << "Nombre: " << lugar.nombre << " Gema: " << g[lugar.gema] << " Dificultad: " << lugar.dificultad << endl;
-//   return salida;
-// }

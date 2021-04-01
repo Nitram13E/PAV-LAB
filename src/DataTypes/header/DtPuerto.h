@@ -1,13 +1,12 @@
-#ifndef PUERTO
-#define PUERTO
+#ifndef DTPUERTO
+#define DTPUERTO
 #define MAX_ARRIBO 30
 #define CANT_ARRIBOS 0
 
 #include <ostream>
 #include <string>
 
-#include "Fecha.h"
-#include "Arribo.h"
+#include "DtFecha.h"
 
 class DtPuerto
 {
@@ -16,12 +15,10 @@ class DtPuerto
         std::string nombre;
         DtFecha fechaCreacion;
         int cantArribos;
-        
-        DtArribo *arribos;
          
     public:
         DtPuerto();
-        DtPuerto(std::string, std::string, DtFecha);
+        DtPuerto(std::string, std::string, DtFecha, int);
         ~DtPuerto();
 
         void setId(std::string);

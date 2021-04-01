@@ -1,17 +1,18 @@
 #ifndef BARCOPESQUERO
 #define BARCOPESQUERO
 
+#include <iostream>
 #include "../Barco.h"
 
-class DtBarcoPesquero : public DtBarco
+class BarcoPesquero : public Barco
 {
     private:
         int capacidad;
         int carga;
 
     public:
-        DtBarcoPesquero();
-        DtBarcoPesquero(std::string id, std::string nombre, int capacidad, int carga);
+        BarcoPesquero();
+        BarcoPesquero(std::string id, std::string nombre, int capacidad, int carga);
 
         void setCapacidad(int);
         int getCapacidad();
@@ -21,6 +22,5 @@ class DtBarcoPesquero : public DtBarco
 
         void arribar(float);
 };
-
 
 #endif
