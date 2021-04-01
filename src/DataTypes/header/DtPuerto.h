@@ -18,7 +18,7 @@ class DtPuerto
          
     public:
         DtPuerto();
-        DtPuerto(std::string, std::string, DtFecha, int);
+        DtPuerto(std::string, std::string, DtFecha);
         ~DtPuerto();
 
         void setId(std::string);

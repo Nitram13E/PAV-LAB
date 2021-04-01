@@ -58,9 +58,9 @@ std::ostream& operator << (std::ostream& salida, DtFecha fecha)
     return salida;
 }
 
-bool operator == (DtFecha f1,DtFecha f2)
+bool operator == (DtFecha f1, DtFecha f2)
 {
-    return f1.getDia()==f2.getDia() && f1.getMes()==f2.getMes() && f1.getAnio()==f2.getAnio();
+    return f1.getDia() == f2.getDia() && f1.getMes() == f2.getMes() && f1.getAnio() == f2.getAnio();
 }
     
 bool operator < (DtFecha f1, DtFecha f2)

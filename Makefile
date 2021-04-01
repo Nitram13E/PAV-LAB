@@ -1,34 +1,28 @@
-main: src/main.o src/Class/Arribo.o src/Class/Barco.o src/Class/Puerto.o src/Class/Barcos/BarcoPasajero.o src/Class/Barcos/BarcoPesquero.o src/DataTypes/DtArribo.o src/DataTypes/DtBarco.o src/DataTypes/DtFecha.o src/DataTypes/DtPuerto.o src/DataTypes/Barcos/DtBarcoPasajero.o src/DataTypes/Barcos/DtBarcoPesquero.o
-	
-	mv src/main.o src/Class/Arribo.o src/Class/Barco.o src/Class/Puerto.o src/Class/Barcos/BarcoPasajero.o src/Class/Barcos/BarcoPesquero.o ./Obj
-	mv src/DataTypes/DtArribo.o src/DataTypes/DtBarco.o src/DataTypes/DtFecha.o src/DataTypes/DtPuerto.o src/DataTypes/Barcos/DtBarcoPasajero.o src/DataTypes/Barcos/DtBarcoPesquero.o ./obj
-	g++ obj/*.o -o sistema
+exec = programa #Nombre del archivo ejecutable
 
-main.o: main.cpp
+obj = src/main.o \
+	  src/Class/Arribo.o \
+	  src/Class/Barco.o \
+	  src/Class/Barcos/BarcoPasajero.o \
+	  src/Class/Barcos/BarcoPesquero.o \
+	  src/Class/Puerto.o \
+	  src/Class/Fecha.o \
+	  \
+	  src/DataTypes/DtArribo.o \
+	  src/DataTypes/DtBarco.o \
+	  src/DataTypes/Barcos/DtBarcoPasajero.o \
+	  src/DataTypes/Barcos/DtBarcoPesquero.o \
+	  src/DataTypes/DtPuerto.o \
+	  src/DataTypes/DtFecha.o
 
-Arribo.o: Arribo.cpp
+all: $(obj)
+	@ mv $(obj) ./obj
+	g++ obj/*.o -o $(exec)
+	@ echo "\nEjecutar con: ./$(exec)"
 
-Barco.o: Barco.cpp
-
-BarcoPesquero.o: BarcoPesquero.cpp
-
-BarcoPasajero.o: BarcoPasajero.cpp
-
-Puerto.o: Puerto.cpp
-
-DtFecha.o: DtFecha.cpp
-
-DtArribo.o: DtArribo.cpp
-
-DtBarco.o: DtBarco.cpp
-
-DtBarcoPesquero.o: DtBarcoPesquero.cpp
-
-DtBarcoPasajero.o: DtBarcoPasajero.cpp
-
-DtPuerto.o: DtPuerto.cpp
+$(obj): %.o: %.cpp
 
 clean:
-	rm -f obj/*.o sistema
+	rm -f obj/*.o $(exec)
 	clear
 
