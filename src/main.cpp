@@ -6,6 +6,6 @@ int main()
 
     BarcoPesquero * pesq = new BarcoPesquero();
 
-
+  
     return 0;
 }
