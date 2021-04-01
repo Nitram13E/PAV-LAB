@@ -29,3 +29,16 @@ TipoTamanio DtBarcoPasajero::getTamanio()
 {
     return this -> tamanio;
 }
+
+std::ostream& operator << (std::ostream& salida, DtBarcoPasajero pasajero)
+{
+    std::cout << (DtBarco) pasajero;
+
+    std::cout << "- Tipo de barco: Barco pasajero" << std::endl;
+
+    std::cout << "- Cantidad de pasajeros: " << pasajero.getCantPasajeros() << std::endl;
+
+    std:: cout << "- Tamanio: " << pasajero.getTamanio() << std::endl;
+
+    return salida;
+}

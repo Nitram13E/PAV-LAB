@@ -2,7 +2,7 @@
 #define BARCOPASAJERO
 
 #include "../Barco.h"
-#include "../../DataTypes/header/TipoTamanio.h"
+#include "../../../DataTypes/header/TipoTamanio.h"
 
 class BarcoPasajero : public Barco
 {

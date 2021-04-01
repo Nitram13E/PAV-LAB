@@ -30,7 +30,14 @@ int BarcoPesquero::getCarga()
     return this -> carga;
 }
 
-void BarcoPesquero::arribar(float)
+void BarcoPesquero::arribar(float cargaDespacho)
 {
-    
+    if(this -> getCarga() >= cargaDespacho)
+    {
+        this -> setCarga(this->getCarga() - cargaDespacho);
+    }
+    else
+    {
+        throw std::invalid_argument("No hay carga suficiente para retirar");
+    }
 }
