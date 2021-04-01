@@ -1,6 +1,7 @@
 #ifndef DTBARCOPASAJERO
 #define DTBARCOPASAJERO
 
+#include <iostream>
 #include "../DtBarco.h"
 #include "../TipoTamanio.h"
 
@@ -19,6 +20,8 @@ class DtBarcoPasajero : public DtBarco
 
         void setTamanio(TipoTamanio);
         TipoTamanio getTamanio();
+
+        friend std::ostream& operator << (std::ostream&, DtBarcoPasajero);
 };
 
 

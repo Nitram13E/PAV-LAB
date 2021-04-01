@@ -6,7 +6,7 @@
 #include <ostream>
 #include <string>
 
-#include "../DataTypes/header/DtFecha.h"
+#include "../../DataTypes/header/DtFecha.h"
 #include "Arribo.h"
 
 class Puerto

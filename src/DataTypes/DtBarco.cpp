@@ -1,4 +1,3 @@
-
 #include "header/DtBarco.h"
 
 DtBarco::DtBarco(){}
@@ -31,4 +30,12 @@ void DtBarco::setNombre(std::string nombre)
 std::string DtBarco::getNombre()
 {
     return this -> nombre;
+}
+
+std::ostream& operator << (std::ostream& salida, DtBarco barco)
+{
+    std::cout << "- IdBarco: " << barco.getId() << std::endl;
+    std::cout << "- Nombre: " << barco.getNombre() << std::endl;
+
+    return salida;
 }

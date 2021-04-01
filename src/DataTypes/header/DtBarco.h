@@ -1,7 +1,7 @@
 #ifndef DTBARCO
 #define DTBARCO
 
-#include <string>
+#include <iostream>
 
 class DtBarco
 {
@@ -20,8 +20,7 @@ public:
     void setNombre(std::string);
     std::string getNombre();
 
+    friend std::ostream& operator << (std::ostream&, DtBarco);
 };
-
-
 
 #endif

@@ -1,6 +1,7 @@
 #ifndef BARCOPESQUERO
 #define BARCOPESQUERO
 
+#include <iostream>
 #include "../Barco.h"
 
 class BarcoPesquero : public Barco
