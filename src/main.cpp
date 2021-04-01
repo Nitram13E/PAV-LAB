@@ -6,8 +6,6 @@ int main()
 
     BarcoPesquero * pesq = new BarcoPesquero();
 
-   
-    std::cout << "test" << std::endl;
 
     return 0;
 }
