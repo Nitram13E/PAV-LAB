@@ -1,7 +1,7 @@
 #ifndef ARRIBO
 #define ARRIBO
 
-#include "../DataTypes/header/DtFecha.h"
+#include "../../DataTypes/header/DtFecha.h"
 #include "Barco.h"
 
 class Arribo

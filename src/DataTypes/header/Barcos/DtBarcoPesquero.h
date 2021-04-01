@@ -18,6 +18,8 @@ class DtBarcoPesquero : public DtBarco
 
         void setCarga(int);
         int getCarga();
+
+        friend std::ostream& operator << (std::ostream&, DtBarcoPesquero);
 };
 
 #endif
