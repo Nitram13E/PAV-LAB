@@ -25,4 +25,3 @@ $(obj): %.o: %.cpp
 clean:
 	rm -f obj/*.o $(exec)
 	clear
-
