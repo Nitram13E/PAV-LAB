@@ -2,12 +2,12 @@
 
 DtPuerto::DtPuerto(){}
         
-DtPuerto::DtPuerto(std::string id, std::string nombre, DtFecha fechaCreacion, int cantArribos)
+DtPuerto::DtPuerto(std::string id, std::string nombre, DtFecha fechaCreacion)
 {
     this -> id = id;
     this -> nombre = nombre;
     this -> fechaCreacion = fechaCreacion;
-    this -> cantArribos = cantArribos;
+    this -> cantArribos = CANT_ARRIBOS;
 }
 
 DtPuerto::~DtPuerto()
