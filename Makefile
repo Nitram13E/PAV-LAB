@@ -13,7 +13,9 @@ obj = src/main.o \
 	  src/DataTypes/Barcos/DtBarcoPasajero.o \
 	  src/DataTypes/Barcos/DtBarcoPesquero.o \
 	  src/DataTypes/DtPuerto.o \
-	  src/DataTypes/DtFecha.o
+	  src/DataTypes/DtFecha.o \
+	  \
+	  src/Colecciones/ColArribo.o
 
 all: $(obj)
 	@ mv $(obj) ./obj

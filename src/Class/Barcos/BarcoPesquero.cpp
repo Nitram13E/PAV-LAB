@@ -34,10 +34,22 @@ void BarcoPesquero::arribar(float cargaDespacho)
 {
     if(this -> getCarga() >= cargaDespacho)
     {
-        this -> setCarga(this->getCarga() - cargaDespacho);
+        this -> setCarga(this -> getCarga() - cargaDespacho);
     }
     else
     {
-        throw std::invalid_argument("No hay carga suficiente para retirar");
+        throw std::invalid_argument("No hay carga suficiente para retirar.");
+    }
+}
+
+void BarcoPesquero::partir(float cargaDespacho)
+{
+    if ((this -> getCarga() + cargaDespacho) <= MAX_CARGA)
+    {
+        this -> setCarga(this -> getCarga() + cargaDespacho);
+    }
+    else
+    {
+        throw std::invalid_argument("Carga excedida.");
     }
 }
