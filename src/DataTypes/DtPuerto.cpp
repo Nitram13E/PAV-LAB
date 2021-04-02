@@ -45,3 +45,13 @@ DtFecha DtPuerto::getFechaCreacion()
 {
     return this -> fechaCreacion;
 }
+
+void DtPuerto::setCantArribos(int cant)
+{
+    this -> cantArribos = cant;
+}
+
+int DtPuerto::getCantArribos()
+{
+    return this -> cantArribos;
+}

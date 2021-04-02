@@ -14,18 +14,16 @@ class Arribo
     public:
         Arribo();
         Arribo(DtFecha, float, Barco*);
-        
+        ~Arribo();
+
         void setFecha(DtFecha);
         DtFecha getFecha();
         
-
         void setCarga(float);
         float getCarga(); 
 
         void setBarco(Barco*);
-        Barco* getBarco();
-
-        ~Arribo();
+        Barco* getBarco(); 
 };
 
 #endif
