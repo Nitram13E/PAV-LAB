@@ -1,8 +1,8 @@
 #ifndef COLBARCO
-
 #define COLBARCO
 #define MAX_BARCOS 50
 
+#include "ColStructs.h"
 #include "../../DataTypes/header/DtBarco.h"
 
 typedef struct DtBarcos
