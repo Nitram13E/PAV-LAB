@@ -24,7 +24,7 @@ Puerto* existePuerto(std::string idPuerto)
 {
     int i = 0;
 
-    Puertos iterador;
+    puertos iterador;
 
     for (int i = 0; i < iterador -> cantPuertos; i++)
     {
@@ -41,7 +41,7 @@ Barco* existeBarco(std::string idBarco)
 {
     int i = 0;
     
-    Barcos iterador;
+    barcos iterador;
     
     for (int i = 0; i < iterador -> cantBarcos; i++)
     {
