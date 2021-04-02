@@ -10,14 +10,16 @@
 
 typedef struct str_Puertos
 {
-    Puerto *puertos[MAX_PUERTOS];
+    Puerto * puertos[MAX_PUERTOS];
     int cantPuertos;
+
 }*Puertos;
 
 typedef struct str_Barcos
 {
-    Barco *barcos[MAX_BARCOS];
+    Barco * barcos[MAX_BARCOS];
     int cantBarcos;    
+
 }*Barcos;
 
 void agregarArribo(std::string idPuerto, std::string idBarco, DtFecha fecha, float cargaDespacho);
