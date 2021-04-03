@@ -7,4 +7,6 @@
 
 void agregarBarco(DtBarco& barco);
 
+DtBarco** listarBarcos(int& cantBarcos);
+
 #endif

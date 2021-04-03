@@ -6,7 +6,6 @@ obj = src/main.o \
 	  src/Class/Barcos/BarcoPasajero.o \
 	  src/Class/Barcos/BarcoPesquero.o \
 	  src/Class/Puerto.o \
-	  src/Class/Fecha.o \
 	  \
 	  src/DataTypes/DtArribo.o \
 	  src/DataTypes/DtBarco.o \
