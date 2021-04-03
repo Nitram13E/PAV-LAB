@@ -22,8 +22,6 @@ void agregarArribo(std::string idPuerto, std::string idBarco, DtFecha fecha, flo
 
 Puerto* existePuerto(std::string idPuerto)
 {
-    int i = 0;
-
     puertos iterador;
 
     for (int i = 0; i < iterador -> cantPuertos; i++)
@@ -39,8 +37,6 @@ Puerto* existePuerto(std::string idPuerto)
 
 Barco* existeBarco(std::string idBarco)
 {
-    int i = 0;
-    
     barcos iterador;
     
     for (int i = 0; i < iterador -> cantBarcos; i++)

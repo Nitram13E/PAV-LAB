@@ -14,6 +14,7 @@ class DtArribo
     public:
         DtArribo();
         DtArribo(DtFecha, float, DtBarco*);
+        ~DtArribo();
         
         void setFecha(DtFecha);
         DtFecha getFecha();
@@ -25,7 +26,7 @@ class DtArribo
         void setBarco(DtBarco*);
         DtBarco* getBarco();
 
-        ~DtArribo();
+        
 };
 
 #endif
