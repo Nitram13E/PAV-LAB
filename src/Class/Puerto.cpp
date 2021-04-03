@@ -9,7 +9,6 @@ Puerto::Puerto(std::string id, std::string nombre, DtFecha fechaCreacion)
     this -> fechaCreacion = fechaCreacion;
     this -> cantArribos = CANT_ARRIBOS;
 
-    //this -> arribos = new DtArribo[MAX_ARRIBO];
 }
 
 Puerto::~Puerto()
@@ -46,4 +45,10 @@ void Puerto::setFechaCreacion(DtFecha)
 DtFecha Puerto::getFechaCreacion()
 {
     return this -> fechaCreacion;
+}
+
+\
+int Puerto::getCantArribos()
+{
+    return this -> cantArribos;
 }

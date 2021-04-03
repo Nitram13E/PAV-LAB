@@ -32,6 +32,8 @@ class DtPuerto
 
         void setCantArribos(int);
         int getCantArribos();
+
+        friend std::ostream& operator << (std::ostream&, DtPuerto);
 };
 
 #endif
