@@ -19,7 +19,7 @@ void agregarBarco(DtBarco& barco)
     {
         BarcoPasajero * newPasajero = new BarcoPasajero(dtPasajero -> getId(), dtPasajero -> getNombre(), dtPasajero -> getCantPasajeros(), dtPasajero -> getTamanio());
 
-        Barco& newBarco = dynamic_cast<Barco&>(newPasajero*);
+        Barco& newBarco = dynamic_cast<Barco&>(newPasajero);
     }
 }
 
