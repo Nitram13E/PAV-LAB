@@ -22,15 +22,11 @@ void agregarArribo(std::string idPuerto, std::string idBarco, DtFecha fecha, flo
 
 Puerto* existePuerto(std::string idPuerto)
 {
-    int i = 0;
-
-    puertos iterador;
-
-    for (int i = 0; i < iterador -> cantPuertos; i++)
+    for (int i = 0; i < puertos.cantPuertos; i++)
     {
-        if (iterador -> puertos[i] -> getId() == idPuerto)
+        if (puertos.puertos[i] -> getId() == idPuerto)
         {
-            return iterador -> puertos[i];
+            return puertos.puertos[i];
         }
     }
 
@@ -39,15 +35,11 @@ Puerto* existePuerto(std::string idPuerto)
 
 Barco* existeBarco(std::string idBarco)
 {
-    int i = 0;
-    
-    barcos iterador;
-    
-    for (int i = 0; i < iterador -> cantBarcos; i++)
+    for (int i = 0; i < barcos.cantBarcos; i++)
     {
-        if (iterador -> barcos[i] -> getId() == idBarco)
+        if (barcos.barcos[i] -> getId() == idBarco)
         {
-            return iterador -> barcos[i];
+            return barcos.barcos[i];
         }
     }
 

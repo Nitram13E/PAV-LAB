@@ -22,19 +22,19 @@ DtArribo** obtenerInfoArribosEnPuerto(std::string idPuerto, int& cantArribos)
         length = puerto -> getCantArribos();
     //En caso de que cantArribos sea mayor a la cantidad de arribos del puerto, se devueleve todos los arribos del puerto
 
-    DtArribo * arrayArribo = copiarArrayArribo(puerto -> getArribo(), length);
+    DtArribo ** arrayArribo = copiarArrayArribo(puerto -> getArribos(), length);
     
-    return *arrayArribo;
+    return arrayArribo;
 }
 
-DtArribo * copiarArrayArribo(Arribo * original, int cantArribos)
+DtArribo ** copiarArrayArribo(Arribo * original, int cantArribos)
 {
-    DtArribo * copia = new DtArribo[cantArribos];
+    DtArribo ** copia = new DtArribo*[cantArribos];
 
     for (int i = 0; i < cantArribos; i++)
     {
-        copia[i].setFecha(original[i].getFecha());
-        copia[i].setCarga(original[i].getCarga());
+        copia[i] -> setFecha(original[i].getFecha());
+        copia[i] -> setCarga(original[i].getCarga());
 
         BarcoPesquero* barco_pesquero = dynamic_cast<BarcoPesquero*>(original[i].getBarco());
         BarcoPasajero* barco_pasajero = dynamic_cast<BarcoPasajero*>(original[i].getBarco());
@@ -50,7 +50,7 @@ DtArribo * copiarArrayArribo(Arribo * original, int cantArribos)
             copiaBarcoPasajero -> setNombre(barco_pasajero -> getNombre());
             copiaBarcoPasajero -> setCantPasajeros(barco_pasajero -> getCantPasajeros());
             copiaBarcoPasajero -> setTamanio(barco_pasajero -> getTamanio());
-            copia[i].setBarco(copiaBarcoPasajero);
+            copia[i] -> setBarco(copiaBarcoPasajero);
         }
         else
         {
@@ -59,9 +59,36 @@ DtArribo * copiarArrayArribo(Arribo * original, int cantArribos)
             copiaBarcoPesquero -> setNombre(barco_pesquero -> getNombre());
             copiaBarcoPesquero -> setCapacidad(barco_pesquero -> getCapacidad());
             copiaBarcoPesquero -> setCarga(barco_pesquero -> getCarga());
-            copia[i].setBarco(copiaBarcoPasajero);
+            copia[i] -> setBarco(copiaBarcoPasajero);
         }
 
     }
     return copia;
+}
+
+void eliminarArribos(std::string idPuerto, DtFecha fecha)
+{
+    Puerto * puerto = existePuerto(idPuerto);
+    Arribo * arrayArribo;
+    
+    if (puerto == NULL)
+    {
+        throw std::invalid_argument("NO EXISTE UN PUERTO CON EL ID: " + idPuerto);
+        return;
+    }
+
+    arrayArribo = puerto -> getArribos();
+    
+    for (int i = 0; i < puerto -> getCantArribos(); i++)
+    {
+        if (arrayArribo[i].getFecha() == fecha)
+        {
+            for (int j = i; j < puerto -> getCantArribos() - 1; j++)
+            {
+                arrayArribo[j] = arrayArribo[j + 1];
+            }
+        }
+    }
+
+    puerto -> setCantArribos(puerto -> getCantArribos() - 1);
 }

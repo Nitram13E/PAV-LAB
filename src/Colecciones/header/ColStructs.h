@@ -8,18 +8,18 @@
 #define MAX_BARCOS 50
 #define MAX_PUERTOS 50
 
-typedef struct Barcos
+struct Barcos
 {
     Barco * barcos[MAX_BARCOS];
     int cantBarcos;    
 
-}*barcos;
+}barcos;
 
-typedef struct Puertos
+struct Puertos
 {
     Puerto * puertos[MAX_PUERTOS];
     int cantPuertos;
 
-}*puertos;
+}puertos;
 
 #endif

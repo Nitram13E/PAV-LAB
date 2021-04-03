@@ -37,7 +37,7 @@ class Puerto
         void setCantArribos(int);
         int getCantArribos();
 
-        Arribo* getArribo();
+        Arribo* getArribos();
 };
 
 #endif
