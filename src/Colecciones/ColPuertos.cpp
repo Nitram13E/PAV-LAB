@@ -1,9 +1,42 @@
 #include "header/ColPuertos.h"
 #include "header/ColArribo.h"
 #include "../../DataTypes/header/DtBarco.h"
+#include "../../DataTypes/header/DtPuerto.h"
 #include "../../DataTypes/header/Barcos/DtBarcoPasajero.h"
 #include "../../DataTypes/header/Barcos/DtBarcoPesquero.h"
 #include "../../Class/header/Barcos/BarcoPasajero.h"
+
+
+void agregarPuerto(std::string id, std::string nombre, DtFecha fechaCreacion)
+{
+    if(existePuerto(id) != NULL)
+    {
+        throw std::invalid_argument("Ya existe el puerto con idPuerto: " + id);
+        return;
+    }
+  
+    Puerto* p = new Puerto(id,nombre,fechaCreacion);
+
+    puertos.puertos[puertos.cantPuertos] = p;
+
+    puertos.cantPuertos++;
+}
+
+DtPuerto** listarPuerto(int& cantPuertos)
+{
+    cantPuertos = puertos.cantPuertos;
+
+    DtPuerto** arreglo = new DtPuerto*[cantPuertos];
+
+    for(int i = 0; i < cantPuertos; i++)
+    {
+        DtPuerto *auxP = new DtPuerto(puertos.puertos[i] -> getId(), puertos.puertos[i] -> getNombre(), puertos.puertos[i] -> getFechaCreacion(), puertos.puertos[i] -> getCantArribos());
+
+        arreglo[i] = auxP;
+    }
+
+    return arreglo;
+}
 
 DtArribo** obtenerInfoArribosEnPuerto(std::string idPuerto, int& cantArribos)
 {
