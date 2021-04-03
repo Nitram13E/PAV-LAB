@@ -3,7 +3,7 @@
 #include <iostream>
 
 #include "../../DataTypes/header/DtArribo.h"
-#include "ColStructs.h"
+#include "Structs.h"
 
 DtArribo** obtenerInfoArribosEnPuerto(std::string idPuerto, int& cantArribos);
 

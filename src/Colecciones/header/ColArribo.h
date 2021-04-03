@@ -1,7 +1,7 @@
 #ifndef COLARRIBO
 #define COLARRIBO
 
-#include "ColStructs.h"
+#include "Structs.h"
 
 void agregarArribo(std::string idPuerto, std::string idBarco, DtFecha fecha, float cargaDespacho);
 

@@ -15,7 +15,7 @@ void agregarArribo(std::string idPuerto, std::string idBarco, DtFecha fecha, flo
     
     Arribo * arribo = new Arribo(fecha, cargaDespacho, barco);
 
-    puerto -> getArribo()[puerto -> getCantArribos() - 1] = *arribo;
+    puerto -> getArribos()[puerto -> getCantArribos() - 1] = *arribo;
 
     puerto -> setCantArribos(puerto -> getCantArribos() + 1);
 }

@@ -15,7 +15,7 @@ obj = src/main.o \
 	  src/DataTypes/DtPuerto.o \
 	  src/DataTypes/DtFecha.o \
 	  \
-	  src/Colecciones/ColArribo.o
+	  src/Colecciones/ColArribo.o \
 	  src/Colecciones/ColBarco.o
 
 all: $(obj)
