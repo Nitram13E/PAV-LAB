@@ -4,9 +4,7 @@
 #define CANT_ARRIBOS 0
 
 #include <ostream>
-#include <string>
 
-#include "../../DataTypes/header/DtFecha.h"
 #include "Arribo.h"
 
 class Puerto

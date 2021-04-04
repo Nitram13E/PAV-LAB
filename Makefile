@@ -1,6 +1,7 @@
 exec = programa #Nombre del archivo ejecutable
 
 obj = src/main.o \
+	  \
 	  src/Class/Arribo.o \
 	  src/Class/Barco.o \
 	  src/Class/Barcos/BarcoPasajero.o \
@@ -12,10 +13,7 @@ obj = src/main.o \
 	  src/DataTypes/Barcos/DtBarcoPasajero.o \
 	  src/DataTypes/Barcos/DtBarcoPesquero.o \
 	  src/DataTypes/DtPuerto.o \
-	  src/DataTypes/DtFecha.o \
-	  \
-	  src/Colecciones/ColArribo.o \
-	  src/Colecciones/ColBarco.o
+	  src/DataTypes/DtFecha.o
 
 all: $(obj)
 	@ mv $(obj) ./obj

@@ -64,4 +64,4 @@ std::ostream& operator << (std::ostream& salida, DtPuerto p)
     std::cout << " - Cantidad de Arribos: " << p.getCantArribos() << std::endl;
 
     return salida;
-}
+} 
