@@ -87,7 +87,9 @@ void menu()
                 break;
             
             case 2://Agregar Barco
-                {
+                {   
+                    system("clear");
+                    
                     int opB;
                     std::string idBarco;
                     std::string nombreBarco;
@@ -100,6 +102,9 @@ void menu()
                     
                     if (opB == 1)
                     {
+                        system("clear");
+
+
                         int capacidad;
                         int carga;
                         
@@ -130,6 +135,8 @@ void menu()
                     }
                     else if (opB == 2)
                     {
+                        system("clear");
+
                         int cantPasajeros;
                         int tamanio;
                         
@@ -152,7 +159,6 @@ void menu()
                         try
                         {   
                             agregarBarco(pasajero);
-                            
                         }
                         catch(std::invalid_argument& inv)
                         {
@@ -166,11 +172,69 @@ void menu()
             case 3:
                 /* code */
                 break;
-            case 4:
-                /* code */
+
+            case 4: //Agregar Arribo
+                {
+                    system("clear");
+
+                    std::string idPuerto;
+                    std::string idBarco;
+                    int dia;
+                    int mes;
+                    int anio;
+                    DtFecha fecha;
+                    float cargaDespacho;
+
+                    std::cout << "AGREGAR ARRIBO" << std::endl << std::endl;
+
+                    std::cout << "Ingrese idPuerto: ";
+                    std::cin >> idPuerto;
+
+                    std::cout << "Ingrese idBarco: ";
+                    std::cin >> idBarco;
+
+                    std::cout << "Ingrese una fecha: " << std::endl;
+
+                    std::cout << "dia: ";
+                    std::cin >> dia;
+                    
+                    std::cout << "mes: ";
+                    std::cin >> mes;
+
+                    std::cout << "anio: ";
+                    std::cin >> anio;
+
+                    std::cout << "Ingrese carga de despacho: ";
+                    std::cin >> cargaDespacho;
+
+                    agregarArribo(idPuerto, idBarco, DtFecha(dia, mes, anio), cargaDespacho);
+
+                    sleep(6);
+                }
+               
                 break;
             case 5: //obtenerInfoArribosEnPuerto
-                /* code */
+                {
+                    std::string idPuerto;
+                    int cantArribos;
+                    DtArribo** arrayArribos;
+
+                    std::cout << "OBTENER INFO ARRIBOS" << std::endl << std::endl;
+
+                    std::cout << "Ingrese idPuerto: ";
+                    std::cin >> idPuerto;
+
+                    std::cout << "Ingrese cantidad de arribos: ";
+                    std::cin >> cantArribos;
+                    
+                    arrayArribos = obtenerInfoArribosEnPuerto(idPuerto, cantArribos);
+
+                    for (int i = 0; i < cantArribos; i++)
+                    {
+                        std::cout << arrayArribos[i] << std::endl;
+                    }
+                    
+                }
                 break;
             case 6: //eliminarArribos
                 /* code */
