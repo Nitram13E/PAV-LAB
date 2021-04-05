@@ -125,7 +125,6 @@ void menu()
                         try
                         {
                             agregarBarco(pesquero);
-                            
                         }
                         catch(std::invalid_argument& inv)
                         {
@@ -160,9 +159,9 @@ void menu()
                         {   
                             agregarBarco(pasajero);
                         }
-                        catch(std::invalid_argument& inv)
+                        catch(std::invalid_argument& error)
                         {
-                            std::cout << inv.what() << std::endl;
+                            std::cout << error.what() << std::endl;
                         }
                     }
                     
@@ -187,13 +186,13 @@ void menu()
 
                     std::cout << "AGREGAR ARRIBO" << std::endl << std::endl;
 
-                    std::cout << "Ingrese idPuerto: ";
+                    std::cout << "- Ingrese idPuerto: ";
                     std::cin >> idPuerto;
 
-                    std::cout << "Ingrese idBarco: ";
+                    std::cout << "- Ingrese idBarco: ";
                     std::cin >> idBarco;
 
-                    std::cout << "Ingrese una fecha: " << std::endl;
+                    std::cout << "- Ingrese una fecha: " << std::endl;
 
                     std::cout << "dia: ";
                     std::cin >> dia;
@@ -204,10 +203,17 @@ void menu()
                     std::cout << "anio: ";
                     std::cin >> anio;
 
-                    std::cout << "Ingrese carga de despacho: ";
+                    std::cout << "- Ingrese carga de despacho: ";
                     std::cin >> cargaDespacho;
 
-                    agregarArribo(idPuerto, idBarco, DtFecha(dia, mes, anio), cargaDespacho);
+                    try
+                    {
+                        agregarArribo(idPuerto, idBarco, DtFecha(dia, mes, anio), cargaDespacho);
+                    }
+                    catch(std::invalid_argument& error)
+                    {
+                        std::cout << error.what() << std::endl;
+                    }
 
                     sleep(6);
                 }
@@ -216,23 +222,31 @@ void menu()
             case 5: //obtenerInfoArribosEnPuerto
                 {
                     std::string idPuerto;
-                    int cantArribos;
+                    int cantArribos; 
                     DtArribo** arrayArribos;
 
                     std::cout << "OBTENER INFO ARRIBOS" << std::endl << std::endl;
 
-                    std::cout << "Ingrese idPuerto: ";
+                    std::cout << "- Ingrese idPuerto: ";
                     std::cin >> idPuerto;
 
-                    std::cout << "Ingrese cantidad de arribos: ";
+                    std::cout << "- Ingrese cantidad de arribos: ";
                     std::cin >> cantArribos;
                     
-                    arrayArribos = obtenerInfoArribosEnPuerto(idPuerto, cantArribos);
-
-                    for (int i = 0; i < cantArribos; i++)
+                    try
                     {
-                        std::cout << arrayArribos[i] << std::endl;
+                        arrayArribos = obtenerInfoArribosEnPuerto(idPuerto, cantArribos);
+
+                        for (int i = 0; i < cantArribos; i++)
+                        {
+                            std::cout << arrayArribos[i] << std::endl;
+                        }
                     }
+                    catch(std::invalid_argument& error)
+                    {
+                        std::cout << error.what() << std::endl;
+                    }
+                    
                     
                 }
                 break;
@@ -244,8 +258,6 @@ void menu()
                     int barco;
 
                     DtBarco ** barcolistado = listarBarcos(barco);
-
-                    
 
                     for (int i = 0; i < barco; i++)
                     {
