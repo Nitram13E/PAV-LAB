@@ -81,8 +81,45 @@ void menu()
         switch (opcion)
         {
             case 1://AgregarPuerto
-                
-                    std::cout <<  std::endl;
+                {
+                    std::string idPuerto, nombre;
+                    int dia, mes, anio;
+                    DtFecha * fecha;
+
+                    system("clear");
+
+                    std::cout << "AGREGAR PUERTO" << std::endl << std::endl;
+
+                    std::cout << "- Ingrese idPuerto: ";
+                    std::cin >> idPuerto;
+
+                    std::cout << "- Ingrese Nombre: ";
+                    std::cin >> nombre;
+
+                    std::cout << "- Ingrese una fecha: " << std::endl;
+
+                    std::cout << "dia: ";
+                    std::cin >> dia;
+                    
+                    std::cout << "mes: ";
+                    std::cin >> mes;
+
+                    std::cout << "anio: ";
+                    std::cin >> anio;
+
+                    fecha = new DtFecha(dia, mes, anio);
+
+                    try
+                    {
+                        agregarPuerto(idPuerto, nombre, *fecha);
+                    }
+                    catch(std::invalid_argument& error)
+                    {
+                        std::cout << error.what() << std::endl;
+                    }
+
+                    delete fecha;
+                }
                 
                 break;
             
@@ -246,13 +283,48 @@ void menu()
                     {
                         std::cout << error.what() << std::endl;
                     }
-                    
-                    
+
+                    sleep(6);
                 }
                 break;
             case 6: //eliminarArribos
-                /* code */
-                break;
+                {
+                    std::string idPuerto;
+                    int dia, mes, anio;
+                    DtFecha * fecha;
+
+
+                    std::cout << "ELIMINAR ARRIBO" << std::endl << std::endl;
+
+                    std::cout << "- Ingrese idPuerto: ";
+                    std::cin >> idPuerto;
+                    std::cout << "- Ingrese una fecha: " << std::endl;
+
+                    std::cout << "dia: ";
+                    std::cin >> dia;
+                    
+                    std::cout << "mes: ";
+                    std::cin >> mes;
+
+                    std::cout << "anio: ";
+                    std::cin >> anio;
+
+                    fecha = new DtFecha(dia, mes, anio);
+                    
+                    try
+                    {
+                        eliminarArribos(idPuerto, *fecha);
+
+                    }
+                    catch(std::invalid_argument& error)
+                    {
+                        std::cout << error.what() << std::endl;
+                    }
+
+                    delete fecha;
+                    
+                    break;
+                }
             case 7:
                 {
                     int barco;
