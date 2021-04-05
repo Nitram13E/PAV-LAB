@@ -1,6 +1,7 @@
 #ifndef BARCOPESQUERO
 #define BARCOPESQUERO
 
+#define MAX_CARGA 50
 #include <iostream>
 #include "../Barco.h"
 
@@ -21,6 +22,8 @@ class BarcoPesquero : public Barco
         int getCarga();
 
         void arribar(float);
+
+        void partir(float);
 };
 
 #endif

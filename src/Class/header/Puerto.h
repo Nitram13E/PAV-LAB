@@ -4,9 +4,7 @@
 #define CANT_ARRIBOS 0
 
 #include <ostream>
-#include <string>
 
-#include "../../DataTypes/header/DtFecha.h"
 #include "Arribo.h"
 
 class Puerto
@@ -17,7 +15,7 @@ class Puerto
         DtFecha fechaCreacion;
 
         //Pseudo atributos
-        Arribo *arribos[MAX_ARRIBO];
+        Arribo arribos[MAX_ARRIBO];
         int cantArribos;
 
     public:
@@ -36,6 +34,8 @@ class Puerto
 
         void setCantArribos(int);
         int getCantArribos();
+
+        Arribo* getArribos();
 };
 
 #endif

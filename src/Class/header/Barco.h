@@ -23,6 +23,4 @@ public:
     virtual void arribar(float) = 0;
 };
 
-
-
 #endif

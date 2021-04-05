@@ -12,9 +12,9 @@ private:
 public:
     DtBarco();
     DtBarco(std::string, std::string);
-    ~DtBarco();
+    virtual ~DtBarco();
 
-    void setId(std::string);
+    void setId(std::string);    
     std::string getId();
 
     void setNombre(std::string);
