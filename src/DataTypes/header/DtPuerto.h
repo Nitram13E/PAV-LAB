@@ -18,7 +18,7 @@ class DtPuerto
          
     public:
         DtPuerto();
-        DtPuerto(std::string, std::string, DtFecha);
+        DtPuerto(std::string, std::string, DtFecha, int);
         ~DtPuerto();
 
         void setId(std::string);
@@ -32,6 +32,8 @@ class DtPuerto
 
         void setCantArribos(int);
         int getCantArribos();
+
+        friend std::ostream& operator << (std::ostream&, DtPuerto);
 };
 
 #endif

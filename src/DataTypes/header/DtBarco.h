@@ -1,7 +1,7 @@
 #ifndef DTBARCO
 #define DTBARCO
 
-#include <string>
+#include <iostream>
 
 class DtBarco
 {
