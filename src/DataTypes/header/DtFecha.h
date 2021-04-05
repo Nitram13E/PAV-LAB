@@ -15,17 +15,16 @@ class DtFecha
 
         DtFecha();
         DtFecha(int,int,int);
-        
-        void setDia(int);
+        ~DtFecha();
+
+        void setDia(int dia);
         int getDia();
 
-        void setMes(int);
+        void setMes(int mes);
         int getMes();
-
-        void setAnio(int);
+        
+        void setAnio(int anio);
         int getAnio();
-
-        ~DtFecha();
 
         friend std::ostream& operator << (std::ostream&, DtFecha);
 

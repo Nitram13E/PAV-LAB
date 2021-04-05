@@ -9,7 +9,7 @@ class Arribo
     private:
         DtFecha fecha;
         float carga;
-        Barco *barco;
+        Barco *barco; //Barco o DtBarco?
 
     public:
         Arribo();

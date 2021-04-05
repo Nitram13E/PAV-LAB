@@ -56,7 +56,7 @@ int Puerto::getCantArribos()
     return this -> cantArribos;
 }
 
-Arribo* Puerto::getArribo()
+Arribo* Puerto::getArribos()
 {
     return this -> arribos;
 }
