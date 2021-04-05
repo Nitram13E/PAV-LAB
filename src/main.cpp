@@ -81,8 +81,50 @@ void menu()
         switch (opcion)
         {
             case 1://AgregarPuerto
-                
-                    std::cout <<  std::endl;
+                {
+                    system("clear");
+
+                    std:: string idPuerto;
+                    std:: string nomPuerto;
+                    DtFecha fechaP;
+                    int dia;
+                    int mes;
+                    int anio;
+                    
+                    std::cout << "AGREGAR PUERTO\n" << std::endl;
+                    
+                    std::cout << " - Ingrese idPuerto: ";
+                    std::cin >> idPuerto;
+
+                    std::cout << " - Ingrese nombre: ";
+                    std::cin >> nomPuerto;
+
+                    std::cout << " - Ingrese fecha de creacion: " << std::endl;
+
+                    std::cout << "\t- Dia: ";
+                    std::cin >> dia;
+                    
+                    std::cout << "\t- Mes: ";
+                    std::cin >> mes;
+
+                    std::cout << "\t- Anio: ";
+                    std::cin >> anio;
+                    try
+                    {
+                        fechaP = DtFecha(dia, mes, anio);
+                        agregarPuerto(idPuerto, nomPuerto, fechaP);
+                        
+                        std::cout << "\nSe ha agregado el puerto con id " << idPuerto << " correctamente." << std::endl;
+                    }
+                    catch (std::invalid_argument& i)
+                    {
+                        std::cout << i.what() << std::endl;
+                        std::cout << "\nVuelva a intentar" << std::endl;
+                    }
+
+                    sleep(3);
+                    
+                }
                 
                 break;
             
@@ -94,6 +136,7 @@ void menu()
                     std::string idBarco;
                     std::string nombreBarco;
 
+                    std::cout << "AGREGAR BARCO" << std::endl << std::endl;
                     std::cout << "Elija tipo de barco: " << std::endl << std::endl;
                     std::cout << "1 - BarcoPesquero " << std::endl;
                     std::cout << "2 - BarcoPasajero " << std:: endl;
@@ -169,8 +212,31 @@ void menu()
                     break;
                 }
                 
-            case 3:
-                /* code */
+            case 3: //Listar Puerto
+                {
+                    system("clear");
+
+                    int cantP;
+
+                    std::cout << "LISTA DE PUERTOS\n" << std::endl;
+
+                    DtPuerto** lista = listarPuerto(cantP);
+
+                    if(cantP == 0)
+                    {
+                        std::cout << "\nNo existen puertos ingresados" << std::endl; 
+                    }
+                    else
+                    {
+                        for(int i = 0; i < cantP; i++)
+                        {
+                            std::cout << "-----------------------\n" << std::endl;
+                            std::cout << *lista[i] << std::endl;
+                        }
+                    }
+
+                    sleep(5);
+                }
                 break;
 
             case 4: //Agregar Arribo

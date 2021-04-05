@@ -76,7 +76,7 @@ bool operator < (DtFecha f1, DtFecha f2)
 
 bool DtFecha::checkFecha(int dia, int mes, int anio)
 {
-    if ((1 <= dia <= 31) && (1 <= mes <= 12) && (anio >= 1900)) return true;
+    if (dia>31 || dia<1 || mes <1 || mes>12 || anio<1900) return false;
     
-    return false;
+    return true;
 }

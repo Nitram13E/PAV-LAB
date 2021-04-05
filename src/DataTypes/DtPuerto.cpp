@@ -60,7 +60,7 @@ std::ostream& operator << (std::ostream& salida, DtPuerto p)
 {
     std::cout << " - Id Puerto: " << p.getId() << std::endl;
     std::cout << " - Nombre: " << p.getNombre() << std::endl;
-    std::cout << " - Fecha de Creacion: " << p.getFechaCreacion() << std::endl;
+    std::cout << " - Fecha de Creacion: " << p.getFechaCreacion();
     std::cout << " - Cantidad de Arribos: " << p.getCantArribos() << std::endl;
 
     return salida;
