@@ -56,9 +56,52 @@ DtArribo** obtenerInfoArribosEnPuerto(std::string idPuerto, int& cantArribos);
 void eliminarArribos(std::string idPuerto, DtFecha fecha);
 
 DtBarco** listarBarcos(int& cantBarcos);
+/*
+void cargarDatos()
+{
+    //BARCOS
+    int tamanio=1;
+    
+    TipoTamanio tipo = static_cast<TipoTamanio>(tamanio); 
 
+    DtBarcoPasajero pasa1 = DtBarcoPasajero("10", "titanic", 341, tipo);
+    
+    agregarBarco(pasa1);
 
+    int tamanio=2;
+    
+    tipo = static_cast<TipoTamanio>(tamanio); 
 
+    DtBarcoPasajero pasa2 = DtBarcoPasajero("11", "concordia", 241, tipo);
+    
+    agregarBarco(pasa2);
+
+    int tamanio=3;
+    
+    tipo = static_cast<TipoTamanio>(tamanio); 
+
+    DtBarcoPasajero pasa3 = DtBarcoPasajero("12", "diamond princess", 312, tipo);
+    
+    agregarBarco(pasa3);
+
+    DtBarcoPesquero pes1 = DtBarcoPesquero("13", "santa maria", 234, 5646);
+    
+    agregarBarco(pes1);
+
+    DtBarcoPesquero pes2 = DtBarcoPesquero("14", "pinta", 243, 3534);
+
+    agregarBarco(pes1);
+
+    //PUERTOS
+
+    agregarPuerto("100", "MVD", fecha);
+
+    agregarPuerto("101", "B", fecha);
+
+    agregarPuerto("102", "MVD", fecha);
+
+}
+*/
 void menu()
 {
     int opcion;
@@ -86,7 +129,6 @@ void menu()
 
                     std:: string idPuerto;
                     std:: string nomPuerto;
-                    DtFecha fechaP;
                     int dia;
                     int mes;
                     int anio;
@@ -111,8 +153,7 @@ void menu()
                     std::cin >> anio;
                     try
                     {
-                        fechaP = DtFecha(dia, mes, anio);
-                        agregarPuerto(idPuerto, nomPuerto, fechaP);
+                        agregarPuerto(idPuerto, nomPuerto, DtFecha(dia, mes, anio));
                         
                         std::cout << "\nSe ha agregado el puerto con id " << idPuerto << " correctamente!" << std::endl;
                     }
@@ -146,7 +187,6 @@ void menu()
                     if (opB == 1)
                     {
                         system("clear");
-
 
                         int capacidad;
                         int carga;
@@ -300,9 +340,6 @@ void menu()
 
                     std::cout << "- Ingrese idPuerto: ";
                     std::cin >> idPuerto;
-
-                    std::cout << "- Ingrese cantidad de arribos: ";
-                    std::cin >> cantArribos;
                     
                     try
                     {
@@ -505,45 +542,6 @@ Barco * convertirBarco(DtBarco& barco)
     return NULL;
 }
 
-DtArribo ** copiarArrayArribo(Arribo * original, int cantArribos)
-{
-    DtArribo ** copia = new DtArribo*[cantArribos];
-
-    for (int i = 0; i < cantArribos; i++)
-    {
-        copia[i] -> setFecha(original[i].getFecha());
-        copia[i] -> setCarga(original[i].getCarga());
-
-        BarcoPesquero* barco_pesquero = dynamic_cast<BarcoPesquero*>(original[i].getBarco());
-        BarcoPasajero* barco_pasajero = dynamic_cast<BarcoPasajero*>(original[i].getBarco());
-
-
-        DtBarcoPasajero * copiaBarcoPasajero;
-        DtBarcoPesquero * copiaBarcoPesquero;
-
-        if (barco_pasajero != NULL)
-        {  
-            copiaBarcoPasajero = new DtBarcoPasajero();
-            copiaBarcoPasajero -> setId(barco_pasajero -> getId());
-            copiaBarcoPasajero -> setNombre(barco_pasajero -> getNombre());
-            copiaBarcoPasajero -> setCantPasajeros(barco_pasajero -> getCantPasajeros());
-            copiaBarcoPasajero -> setTamanio(barco_pasajero -> getTamanio());
-            copia[i] -> setBarco(copiaBarcoPasajero);
-        }
-        else
-        {
-            copiaBarcoPesquero = new DtBarcoPesquero();
-            copiaBarcoPesquero -> setId(barco_pesquero -> getId());
-            copiaBarcoPesquero -> setNombre(barco_pesquero -> getNombre());
-            copiaBarcoPesquero -> setCapacidad(barco_pesquero -> getCapacidad());
-            copiaBarcoPesquero -> setCarga(barco_pesquero -> getCarga());
-            copia[i] -> setBarco(copiaBarcoPasajero);
-        }
-
-    }
-    return copia;
-}
-
 ///////////////OPERACIONES///////////////////////////
 
 void agregarPuerto(std::string id, std::string nombre, DtFecha fechaCreacion)
@@ -551,7 +549,6 @@ void agregarPuerto(std::string id, std::string nombre, DtFecha fechaCreacion)
     if(existePuerto(id) != NULL)
     {
         throw std::invalid_argument("Ya existe el puerto con idPuerto: " + id);
-        return;
     }
   
     Puerto* p = new Puerto(id,nombre,fechaCreacion);
@@ -606,7 +603,7 @@ void agregarArribo(std::string idPuerto, std::string idBarco, DtFecha fecha, flo
     
     Arribo * arribo = new Arribo(fecha, cargaDespacho, barco);
 
-    puerto -> getArribos()[puerto -> getCantArribos() - 1] = *arribo;
+    puerto -> getArribos()[puerto -> getCantArribos()] = *arribo;
 
     puerto -> setCantArribos(puerto -> getCantArribos() + 1);
 }
@@ -615,67 +612,64 @@ DtArribo** obtenerInfoArribosEnPuerto(std::string idPuerto, int& cantArribos)
 {
     std::cout << "entra a obtenerInfoArribosEnPuerto\n";
     Puerto * puerto = existePuerto(idPuerto);
-    int length;
     
     if (puerto == NULL)
     {
-        throw std::invalid_argument("NO EXISTE UN PUERTO CON EL ID: " + idPuerto);
-        return NULL;
+        throw std::invalid_argument("No existe un puerto con id " + idPuerto);
     }
 
-    if(cantArribos <= puerto -> getCantArribos())
-        length = cantArribos;
-    else
-        length = puerto -> getCantArribos();
+   cantArribos = puerto -> getCantArribos();
+        
     //En caso de que cantArribos sea mayor a la cantidad de arribos del puerto, se devueleve todos los arribos del puerto
-
-    DtArribo ** arrayArribo = copiarArrayArribo(puerto -> getArribos(), length);
+    
+    DtArribo ** arrayArribo = copiarArrayArribo(puerto -> getArribos(), cantArribos);
     
     return arrayArribo;
 }
 
 DtArribo ** copiarArrayArribo(Arribo * original, int cantArribos)
 {
-    DtArribo ** copia = new DtArribo*[cantArribos];
+    DtArribo ** copia = new DtArribo*[cantArribos]();
 
     for (int i = 0; i < cantArribos; i++)
     {
+        original -> getBarco();
         std::cout << original[i].getFecha().getDia() << std::endl;
         std::cout << original[i].getFecha().getMes() << std::endl;
         std::cout << original[i].getFecha().getAnio() << std::endl;
-
+        
+        std::cout << "i: " << i << std::endl;
+        std::cout << "1" << std::endl;
         copia[i] -> setFecha(original[i].getFecha());
+        std::cout << "2" << std::endl;
         copia[i] -> setCarga(original[i].getCarga());
-
+        
+        std::cout << "3" << std::endl;
         BarcoPesquero* barco_pesquero = dynamic_cast<BarcoPesquero*>(original[i].getBarco());
+        std::cout << "4" << std::endl;
         BarcoPasajero* barco_pasajero = dynamic_cast<BarcoPasajero*>(original[i].getBarco());
-
+        std::cout << "5" << std::endl;
         DtBarcoPasajero * copiaBarcoPasajero;
+
         DtBarcoPesquero * copiaBarcoPesquero;
 
         if (barco_pasajero != NULL)
         {  
-            copiaBarcoPasajero = new DtBarcoPasajero();
-            copiaBarcoPasajero -> setId(barco_pasajero -> getId());
-            copiaBarcoPasajero -> setNombre(barco_pasajero -> getNombre());
-            copiaBarcoPasajero -> setCantPasajeros(barco_pasajero -> getCantPasajeros());
-            copiaBarcoPasajero -> setTamanio(barco_pasajero -> getTamanio());
+            std::cout << "6" << std::endl;
+            copiaBarcoPasajero = new DtBarcoPasajero(barco_pasajero -> getId(), barco_pasajero -> getNombre(), barco_pasajero -> getCantPasajeros(), barco_pasajero -> getTamanio());
+            
             copia[i] -> setBarco(copiaBarcoPasajero);
         }
         else
         {
-            copiaBarcoPesquero = new DtBarcoPesquero();
-            copiaBarcoPesquero -> setId(barco_pesquero -> getId());
-            copiaBarcoPesquero -> setNombre(barco_pesquero -> getNombre());
-            copiaBarcoPesquero -> setCapacidad(barco_pesquero -> getCapacidad());
-            copiaBarcoPesquero -> setCarga(barco_pesquero -> getCarga());
-            copia[i] -> setBarco(copiaBarcoPasajero);
+            std::cout << "7" << std::endl;
+            copiaBarcoPesquero = new DtBarcoPesquero(barco_pesquero -> getId(), barco_pesquero -> getNombre(), barco_pesquero -> getCapacidad(), barco_pesquero -> getCarga());
+            
+            copia[i] -> setBarco(copiaBarcoPesquero);
         }
-
     }
     return copia;
 }
-
 void eliminarArribos(std::string idPuerto, DtFecha fecha)
 {
     Puerto * puerto = existePuerto(idPuerto);
@@ -737,7 +731,34 @@ DtBarco** listarBarcos(int& cantBarcos)
 }
 
 
+/*
+class Vengador{
+  private:
+    //atributos
+    string nombre;
+    int poder;
+    DtFecha fechaNac;
+    //pseudoatributos
+    Mision* misiones[MAX_MISIONES_VENGADOR];
+    int cantMisiones;
 
+void Vengador::agregarMision(Mision* mision){
+  this->misiones[this->cantMisiones]=mision;
+  this->cantMisiones++;
+}
+//MISION: DtFecha, int puntos, Lugar*
+//DTMISION: DtFecha, int puntos, DtLugar*
+DtMision** Vengador::getDtMisiones(){
+  DtMision** dtMisiones= new DtMision*[this->cantMisiones];
+  for(int i=0;i<this->cantMisiones;i++){
+    DtMision* dtMision = new DtMision(this->misiones[i]->getFechaInicio(),
+                                      this->misiones[i]->getPuntos(),
+                                      this->misiones[i]->getDtLugar());
+    dtMisiones[i]=dtMision;
+  }
+  return dtMisiones;
+}
+*/
 
 
 
