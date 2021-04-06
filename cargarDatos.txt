@@ -1,0 +1,60 @@
+/*
+void cargarDatos()
+{
+    //BARCOS
+    int tamanio=1;
+    
+    TipoTamanio tipo = static_cast<TipoTamanio>(tamanio); 
+
+    DtBarcoPasajero pasa = DtBarcoPasajero("10", "titanic", 341, tipo);
+    
+    agregarBarco(pasa);
+
+    tamanio=2;
+    
+    tipo = static_cast<TipoTamanio>(tamanio); 
+
+    pasa = DtBarcoPasajero("11", "concordia", 241, tipo);
+    
+    agregarBarco(pasa);
+
+    tamanio=3;
+    
+    tipo = static_cast<TipoTamanio>(tamanio); 
+
+    pasa = DtBarcoPasajero("12", "diamond princess", 312, tipo);
+    
+    agregarBarco(pasa);
+
+    DtBarcoPesquero pes = DtBarcoPesquero("13", "santa maria", 234, 5646);
+    
+    agregarBarco(pes);
+
+    pes = DtBarcoPesquero("14", "pinta", 243, 3534);
+
+    agregarBarco(pes);
+
+    //PUERTOS
+
+    DtFecha fecha = DtFecha(1, 2, 1910);
+
+    agregarPuerto("100", "MVD", fecha);
+
+    fecha = DtFecha(15, 6, 1860);
+
+    agregarPuerto("101", "BSAS", fecha);
+
+    fecha = DtFecha(19, 12, 1810);
+
+    agregarPuerto("102", "NYC", fecha);
+
+    //ARRIBOS
+    
+    agregarArribos("100", 145441);
+
+    agregarArribos("101", 4145441);
+
+    agregarArribos("102", 10021441);
+
+}
+*/
