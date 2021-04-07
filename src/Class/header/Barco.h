@@ -2,6 +2,7 @@
 #define BARCO
 
 #include <string>
+#include "../../DataTypes/header/DtBarco.h"
 
 class Barco
 {
@@ -21,6 +22,8 @@ public:
     std::string getNombre();
 
     virtual void arribar(float) = 0;
+
+    virtual DtBarco* getDtBarco() = 0;
 };
 
 #endif

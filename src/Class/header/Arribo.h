@@ -2,6 +2,7 @@
 #define ARRIBO
 
 #include "../../DataTypes/header/DtFecha.h"
+#include "../../DataTypes/header/DtBarco.h"
 #include "Barco.h"
 
 class Arribo
@@ -9,7 +10,7 @@ class Arribo
     private:
         DtFecha fecha;
         float carga;
-        Barco *barco; //Barco o DtBarco?
+        Barco *barco; 
 
     public:
         Arribo();
@@ -24,6 +25,8 @@ class Arribo
 
         void setBarco(Barco*);
         Barco* getBarco(); 
+
+        DtBarco* getDtBarco();
 };
 
 #endif
