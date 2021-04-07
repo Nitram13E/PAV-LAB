@@ -44,3 +44,8 @@ Barco* Arribo::getBarco()
 Arribo::~Arribo()
 {
 }
+
+DtBarco* Arribo::getDtBarco()
+{
+    return this -> barco -> getDtBarco();
+}
