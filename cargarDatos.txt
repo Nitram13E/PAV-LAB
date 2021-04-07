@@ -50,11 +50,17 @@ void cargarDatos()
 
     //ARRIBOS
     
-    agregarArribos("100", 145441);
+    fecha = DtFecha(9, 1, 2020);
 
-    agregarArribos("101", 4145441);
+    agregarArribo("100", "145441", fecha, 234523);
 
-    agregarArribos("102", 10021441);
+    fecha = DtFecha(12, 2, 2021);
+
+    agregarArribo("101", "4145441", fecha, 232323);
+
+    fecha = DtFecha(20, 4, 2020);
+
+    agregarArribo("102", "10021441", fecha, 232323);
 
 }
 */
