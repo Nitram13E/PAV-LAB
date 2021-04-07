@@ -3,6 +3,7 @@
 
 #include "../Barco.h"
 #include "../../../DataTypes/header/TipoTamanio.h"
+#include "../../../DataTypes/header/Barcos/DtBarcoPasajero.h"
 
 class BarcoPasajero : public Barco
 {
@@ -21,6 +22,8 @@ class BarcoPasajero : public Barco
         TipoTamanio getTamanio();
 
         void arribar(float);
+
+        DtBarco* getDtBarco();
 };
 
 

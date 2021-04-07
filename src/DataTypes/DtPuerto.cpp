@@ -15,20 +15,9 @@ DtPuerto::~DtPuerto()
     
 }
 
-void DtPuerto::setId(std::string id)
-{
-    this -> id = id;
-}
-
 std::string DtPuerto::getId()
 {
     return this -> id;    
-}
-
-
-void DtPuerto::setNombre(std::string nombre)
-{
-    this -> nombre = nombre;
 }
 
 std::string DtPuerto::getNombre()
@@ -36,19 +25,9 @@ std::string DtPuerto::getNombre()
     return this -> nombre;
 }
 
-void DtPuerto::setFechaCreacion(DtFecha)
-{
-    this -> fechaCreacion = fechaCreacion;
-}
-
 DtFecha DtPuerto::getFechaCreacion()
 {
     return this -> fechaCreacion;
-}
-
-void DtPuerto::setCantArribos(int cant)
-{
-    this -> cantArribos = cant;
 }
 
 int DtPuerto::getCantArribos()

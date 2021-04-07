@@ -32,3 +32,10 @@ TipoTamanio BarcoPasajero::getTamanio()
 
 void BarcoPasajero::arribar(float cargaDespacho) {}
 
+DtBarco* BarcoPasajero::getDtBarco()
+{
+    DtBarcoPasajero* dtpas = new DtBarcoPasajero(this -> getId(), this -> getNombre(), this -> getCantPasajeros(), this -> getTamanio());
+
+    return dtpas;
+}
+
