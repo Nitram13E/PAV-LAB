@@ -1,4 +1,3 @@
-/*
 void cargarDatos()
 {
     //BARCOS
@@ -40,11 +39,11 @@ void cargarDatos()
 
     agregarPuerto("100", "MVD", fecha);
 
-    fecha = DtFecha(15, 6, 1860);
+    fecha = DtFecha(15, 6, 1905);
 
     agregarPuerto("101", "BSAS", fecha);
 
-    fecha = DtFecha(19, 12, 1810);
+    fecha = DtFecha(19, 12, 1900);
 
     agregarPuerto("102", "NYC", fecha);
 
@@ -63,4 +62,3 @@ void cargarDatos()
     agregarArribo("102", "10021441", fecha, 232323);
 
 }
-*/
