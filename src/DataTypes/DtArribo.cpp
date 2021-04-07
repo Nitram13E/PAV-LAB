@@ -11,29 +11,14 @@ DtArribo::DtArribo(DtFecha fecha, float carga, DtBarco* barco)
     this -> barco = barco;
 }
 
-void DtArribo::setFecha(DtFecha fecha)
-{
-    this -> fecha = fecha;
-}
-
 DtFecha DtArribo::getFecha()
 {
     return this -> fecha;
 }
 
-void DtArribo::setCarga(float carga)
-{
-    this -> carga = carga;
-}
-
 float DtArribo::getCarga()
 {
     return this -> carga ;
-}
-
-void DtArribo::setBarco(DtBarco *barco)
-{
-    this -> barco = barco;
 }
 
 DtBarco* DtArribo::getBarco()
@@ -43,4 +28,25 @@ DtBarco* DtArribo::getBarco()
 
 DtArribo::~DtArribo()
 {
+}
+
+std::ostream& operator << (std::ostream& salida, DtArribo arr)
+{
+    std::cout << arr.getFecha();
+    std::cout << "- Carga: " << arr.getCarga() << std::endl;
+    
+    DtBarcoPasajero* dtpas = dynamic_cast<DtBarcoPasajero*>(arr.getBarco());
+
+    if(dtpas != NULL)
+    {
+        std::cout << *dtpas;
+    } 
+    else
+    {
+        DtBarcoPesquero* dtpes = dynamic_cast<DtBarcoPesquero*>(arr.getBarco());
+
+        std::cout << *dtpes;
+    } 
+
+    return salida;
 }

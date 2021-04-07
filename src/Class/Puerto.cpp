@@ -56,7 +56,24 @@ int Puerto::getCantArribos()
     return this -> cantArribos;
 }
 
-Arribo* Puerto::getArribos()
+Arribo** Puerto:: getArribos()
 {
     return this -> arribos;
+}
+
+void Puerto::agregarArribos(Arribo* arribo){
+  this -> arribos[this -> cantArribos] = arribo;
+  this -> cantArribos++;
+}
+
+DtArribo** Puerto::getDtArribos()
+{
+    DtArribo ** arribo = new DtArribo*[this -> cantArribos];
+
+    for (int i = 0; i < this -> cantArribos; i++)
+    {
+        arribo[i] = new DtArribo(this -> arribos[i] -> getFecha(), this -> arribos[i] -> getCarga(), this -> arribos[i] -> getDtBarco());
+    }
+
+    return arribo;
 }
