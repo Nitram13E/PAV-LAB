@@ -14,10 +14,8 @@ class DtBarcoPesquero : public DtBarco
         DtBarcoPesquero();
         DtBarcoPesquero(std::string id, std::string nombre, int capacidad, int carga);
 
-        void setCapacidad(int);
         int getCapacidad();
 
-        void setCarga(int);
         int getCarga();
 
         friend std::ostream& operator << (std::ostream&, DtBarcoPesquero);
