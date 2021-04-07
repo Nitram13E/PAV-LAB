@@ -2,7 +2,8 @@
 #define DTARRIBO
 
 #include "DtFecha.h"
-#include "DtBarco.h"
+#include "Barcos/DtBarcoPasajero.h"
+#include "Barcos/DtBarcoPesquero.h"
 
 class DtArribo
 {
@@ -15,17 +16,15 @@ class DtArribo
         DtArribo();
         DtArribo(DtFecha, float, DtBarco*);
         ~DtArribo();
-        
-        void setFecha(DtFecha);
+
         DtFecha getFecha();
         
 
-        void setCarga(float);
         float getCarga(); 
 
-        void setBarco(DtBarco*);
         DtBarco* getBarco();
 
+        friend std::ostream& operator << (std::ostream&, DtArribo);
         
 };
 

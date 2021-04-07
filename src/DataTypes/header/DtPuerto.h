@@ -21,16 +21,12 @@ class DtPuerto
         DtPuerto(std::string, std::string, DtFecha, int);
         ~DtPuerto();
 
-        void setId(std::string);
         std::string getId();
         
-        void setNombre(std::string);
         std::string getNombre();
         
-        void setFechaCreacion(DtFecha);
         DtFecha getFechaCreacion();
 
-        void setCantArribos(int);
         int getCantArribos();
 
         friend std::ostream& operator << (std::ostream&, DtPuerto);

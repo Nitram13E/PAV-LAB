@@ -53,3 +53,10 @@ void BarcoPesquero::partir(float cargaDespacho)
         throw std::invalid_argument("Carga excedida.");
     }
 }
+
+DtBarco* BarcoPesquero::getDtBarco()
+{
+    DtBarcoPesquero* dtpes = new DtBarcoPesquero(this -> getId(), this -> getNombre(), this -> getCapacidad(), this -> getCarga());
+
+    return dtpes;
+}

@@ -4,6 +4,7 @@
 #define MAX_CARGA 50
 #include <iostream>
 #include "../Barco.h"
+#include "../../../DataTypes/header/Barcos/DtBarcoPesquero.h"
 
 class BarcoPesquero : public Barco
 {
@@ -24,6 +25,8 @@ class BarcoPesquero : public Barco
         void arribar(float);
 
         void partir(float);
+
+        DtBarco* getDtBarco();
 };
 
 #endif
