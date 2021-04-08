@@ -1,5 +1,7 @@
 #include "../header/Barcos/DtBarcoPasajero.h"
 
+std::string tamanio[4] = {"bote", "crucero", "galeon", "transatlantico"};
+
 DtBarcoPasajero::DtBarcoPasajero(){}
 
 DtBarcoPasajero::DtBarcoPasajero(std::string id, std::string nombre, int cantPasajeros, TipoTamanio tamanio) : DtBarco(id, nombre) 
@@ -26,7 +28,7 @@ std::ostream& operator << (std::ostream& salida, DtBarcoPasajero pasajero)
 
     std::cout << "- Cantidad de pasajeros: " << pasajero.getCantPasajeros() << std::endl;
 
-    std:: cout << "- Tamanio: " << pasajero.getTamanio() << std::endl;
+    std:: cout << "- Tamanio: " << tamanio[pasajero.getTamanio()] << std::endl;
 
     return salida;
 }

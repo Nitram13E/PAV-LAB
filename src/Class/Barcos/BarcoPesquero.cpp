@@ -1,3 +1,4 @@
+
 #include "../header/Barcos/BarcoPesquero.h"
 
 BarcoPesquero::BarcoPesquero(){}
@@ -7,7 +8,7 @@ BarcoPesquero::BarcoPesquero(std::string id, std::string nombre, int capacidad, 
     this -> setId(id);
     this -> setNombre(nombre);
     this -> capacidad = capacidad;
-    this -> carga = carga;   
+    this -> carga = carga;
 }
 
 void BarcoPesquero::setCapacidad(int capacidad)
@@ -32,9 +33,9 @@ int BarcoPesquero::getCarga()
 
 void BarcoPesquero::arribar(float cargaDespacho)
 {
-    if(this -> getCarga() >= cargaDespacho)
+    if (this -> getCarga() >= (int)cargaDespacho)
     {
-        this -> setCarga(this -> getCarga() - cargaDespacho);
+        this -> setCarga(this -> getCarga() - (int)cargaDespacho);
     }
     else
     {
@@ -44,9 +45,9 @@ void BarcoPesquero::arribar(float cargaDespacho)
 
 void BarcoPesquero::partir(float cargaDespacho)
 {
-    if ((this -> getCarga() + cargaDespacho) <= MAX_CARGA)
+    if ((this -> getCarga() - (int)cargaDespacho) <= this -> getCapacidad())
     {
-        this -> setCarga(this -> getCarga() + cargaDespacho);
+        this -> setCarga(this -> getCarga() - (int)cargaDespacho);
     }
     else
     {

@@ -1,7 +1,6 @@
 #ifndef DTBARCOPESQUERO
 #define DTBARCOPESQUERO
 
-#define MAX_CARGA 50
 #include "../DtBarco.h"
 
 class DtBarcoPesquero : public DtBarco

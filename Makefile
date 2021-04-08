@@ -16,6 +16,7 @@ obj = src/main.o \
 	  src/DataTypes/DtFecha.o
 
 all: $(obj)
+	@ mkdir -p ./obj
 	@ mv $(obj) ./obj
 	g++ obj/*.o -o $(exec)
 	@ echo "\nEjecutar con: ./$(exec)"
