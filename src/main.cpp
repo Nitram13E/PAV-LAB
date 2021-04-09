@@ -543,7 +543,7 @@ Barco * convertirBarco(DtBarco& barco)
 
 void agregarPuerto(std::string id, std::string nombre, DtFecha fechaCreacion)
 {
-    if(existePuerto(id) != NULL)
+    if (existePuerto(id) != NULL)
     {
         throw std::invalid_argument("Ya existe el puerto con id " + id);
     }
@@ -565,7 +565,7 @@ void agregarBarco(DtBarco& barco)
         }
     }
 
-    barcos.bar[barcos.cantBarcos] = convertirBarco(barco); //Necesario verificar array no completo
+    barcos.bar[barcos.cantBarcos] = convertirBarco(barco);
     barcos.cantBarcos++;
 }
 
