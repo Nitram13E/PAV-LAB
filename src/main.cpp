@@ -448,7 +448,7 @@ void menu()
                 }
             default: //Opcion incorrecta
             
-                std::cout << "\n" << "Por favor, introduzca una opcion valida." << std::endl;
+                std::cout << "\n" << "Por favor, introduzca una opcion valida.";
                 sleep(1);
 
                 break;
