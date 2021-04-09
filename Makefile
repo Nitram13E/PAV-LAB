@@ -1,4 +1,4 @@
-exec = programa #Nombre del archivo ejecutable
+exec = exec #Nombre del archivo ejecutable
 
 obj = src/main.o \
 	  \
