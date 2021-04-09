@@ -36,7 +36,7 @@ std::string Puerto::getNombre()
     return this -> nombre;
 }
 
-void Puerto::setFechaCreacion(DtFecha)
+void Puerto::setFechaCreacion(DtFecha fechaCreacion)
 {
     this -> fechaCreacion = fechaCreacion;
 }
