@@ -61,9 +61,11 @@ Arribo** Puerto:: getArribos()
     return this -> arribos;
 }
 
-void Puerto::agregarArribos(Arribo* arribo){
-  this -> arribos[this -> cantArribos] = arribo;
-  this -> cantArribos++;
+void Puerto::agregarArribos(Arribo* arribo)
+{
+    this -> arribos[this -> cantArribos] = arribo;
+
+    this -> cantArribos++;
 }
 
 DtArribo** Puerto::getDtArribos()

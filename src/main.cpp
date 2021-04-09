@@ -1,5 +1,9 @@
 #include <iostream>
 #include <unistd.h>
+#include <limits>
+#include <locale.h>
+#include <wchar.h>
+
 #include "Class/header/Barco.h"
 #include "Class/header/Puerto.h"
 
@@ -11,9 +15,8 @@
 #include "DataTypes/header/DtPuerto.h"
 #include "DataTypes/header/DtArribo.h"
 
-
-#define MAX_BARCOS 50
-#define MAX_PUERTOS 50
+#define MAX_BARCOS 10
+#define MAX_PUERTOS 10
 
 struct Barcos
 {
@@ -29,7 +32,7 @@ struct Puertos
 
 }puertos;
 
-///////////////OPERACIONES AUXILIARES///////////////////////////
+///////////////OPERACIONES AUXILIARES/////////////////
 
 Puerto* existePuerto(std::string idPuerto);
 
@@ -55,9 +58,14 @@ void eliminarArribos(std::string idPuerto, DtFecha fecha);
 
 DtBarco** listarBarcos(int& cantBarcos);
 
+void cargarDatos();
+
+void presEnter();
 
 void menu()
 {
+    setlocale(LC_ALL, "");
+
     int opcion;
     
     do
@@ -73,6 +81,7 @@ void menu()
         std::cout << "7) Listar barcos " << std::endl;
         std::cout << "8) Salir " << std::endl;
         std::cout << "Ingrese una opcion: ";
+
         std::cin >> opcion;
 
         switch (opcion)
@@ -81,135 +90,158 @@ void menu()
                 {
                     system("clear");
 
-                    std:: string idPuerto;
-                    std:: string nomPuerto;
-                    int dia;
-                    int mes;
-                    int anio;
-                    
-                    std::cout << "AGREGAR PUERTO\n" << std::endl;
-                    
-                    std::cout << " - Ingrese idPuerto: ";
-                    std::cin >> idPuerto;
-
-                    std::cout << " - Ingrese nombre: ";
-                    std::cin >> nomPuerto;
-
-                    std::cout << " - Ingrese fecha de creacion: " << std::endl;
-
-                    std::cout << "Dia: ";
-                    std::cin >> dia;
-                    
-                    std::cout << "Mes: ";
-                    std::cin >> mes;
-
-                    std::cout << "Anio: ";
-                    std::cin >> anio;
-                    try
+                    if (puertos.cantPuertos < MAX_PUERTOS)
                     {
-                        agregarPuerto(idPuerto, nomPuerto, DtFecha(dia, mes, anio));
+                        std:: string idPuerto;
+                        std:: string nomPuerto;
+                        int dia;
+                        int mes;
+                        int anio;
                         
-                        std::cout << "\nSe ha agregado el puerto con id " << idPuerto << " correctamente!" << std::endl;
+                        std::cout << "AGREGAR PUERTO\n" << std::endl;
+                        
+                        std::cout << " - Ingrese idPuerto: ";
+                        std::cin >> idPuerto;
+
+                        std::cout << " - Ingrese nombre: ";
+                        std::cin >> nomPuerto;
+
+                        std::cout << "\nIngrese fecha de creacion: " << std::endl;
+
+                        std::cout << "- Dia: ";
+                        std::cin >> dia;
+                        
+                        std::cout << "- Mes: ";
+                        std::cin >> mes;
+
+                        std::cout << "- Año: ";
+                        std::cin >> anio;
+
+                        system("clear");
+
+                        try
+                        {
+                            agregarPuerto(idPuerto, nomPuerto, DtFecha(dia, mes, anio));
+                            
+                            std::cout << "\nSe ha agregado el puerto con id " << idPuerto << " correctamente!" << std::endl;
+                        }
+                        catch (std::invalid_argument& i)
+                        {
+                            std::cout << "\n" << i.what() << std::endl;
+                            std::cout << "\nVuelva a intentar" << std::endl;
+                        }
                     }
-                    catch (std::invalid_argument& i)
+                    else
                     {
-                        std::cout << "\n" << i.what() << std::endl;
-                        std::cout << "\nVuelva a intentar" << std::endl;
+                        std::cout << "La lista de puertos esta llena.\n" << std::endl;
                     }
 
-                    sleep(3);
-                    
+                    presEnter();
+                    break;
                 }
-                
-                break;
             
             case 2://Agregar Barco
                 {   
                     system("clear");
                     
-                    int opB;
-                    std::string idBarco;
-                    std::string nombreBarco;
-
-                    std::cout << "AGREGAR BARCO\n" << std::endl;
-                    std::cout << "Elija tipo de barco: " << std::endl << std::endl;
-                    std::cout << "1 - BarcoPesquero " << std::endl;
-                    std::cout << "2 - BarcoPasajero " << std:: endl;
-                    std::cout << "Opcion: ";
-                    std::cin >> opB;
-                    
-                    if (opB == 1)
+                    if (barcos.cantBarcos < MAX_BARCOS)
                     {
-                        system("clear");
 
-                        int capacidad;
-                        int carga;
+                        int op;
+                        std::string idBarco;
+                        std::string nombreBarco;
+
+                        std::cout << "AGREGAR BARCO\n" << std::endl;
+                        std::cout << "Elija tipo de barco: " << std::endl << std::endl;
+                        std::cout << "1 - BarcoPesquero " << std::endl;
+                        std::cout << "2 - BarcoPasajero " << std:: endl;
+                        std::cout << "Opcion: ";
+                        std::cin >> op;
                         
-                        std::cout << "Barco Pesquero" << std::endl << std::endl;
-
-                        std::cout << "Ingrese idBarco: ";
-                        std::cin >> idBarco;
-
-                        std::cout << "Ingrese nombre: ";
-                        std::cin >> nombreBarco;
-
-                        std::cout << "Ingrese capacidad: ";
-                        std::cin >> capacidad;
-
-                        std::cout << "Ingrese carga: ";
-                        std::cin >> carga;
-
-                        DtBarcoPesquero pesquero = DtBarcoPesquero(idBarco, nombreBarco, capacidad, carga);
-                        
-                        try
+                        if (op == 1)
                         {
-                            agregarBarco(pesquero);
-                            std::cout << "\nSe ha agregado el barco con id " << idBarco << " correctamente!" << std::endl;
+                            system("clear");
+
+                            int capacidad;
+                            int carga;
+                            
+                            std::cout << "Barco Pesquero" << std::endl << std::endl;
+
+                            std::cout << "- Ingrese idBarco: ";
+                            std::cin >> idBarco;
+
+                            std::cout << "- Ingrese nombre: ";
+                            std::cin >> nombreBarco;
+
+                            std::cout << "- Ingrese capacidad: ";
+                            std::cin >> capacidad;
+
+                            std::cout << "- Ingrese carga: ";
+                            std::cin >> carga;
+
+                            if (carga <= capacidad)
+                            {
+                                DtBarcoPesquero pesquero = DtBarcoPesquero(idBarco, nombreBarco, capacidad, carga);
+                                
+                                try
+                                {
+                                    agregarBarco(pesquero);
+                                    std::cout << "\nSe ha agregado el barco con id " << idBarco << " correctamente!" << std::endl;
+                                }
+                                catch (std::invalid_argument& inv)
+                                {
+                                    std::cout << "\n" << inv.what() << std::endl;
+                                }
+                            }
+                            else
+                            {
+                                system("clear");
+                                std::cout  << "\n" <<  "Error al agregar barco: La carga supera a la capacidad" << std::endl;
+                            }
                         }
-                        catch(std::invalid_argument& inv)
+                        else if (op == 2)
                         {
-                            std::cout << "\n" << inv.what() << std::endl;
-                            std::cout << "\nVuelva a intentar" << std::endl;
+                            system("clear");
+
+                            int cantPasajeros;
+                            int tamanio;
+
+                            std::cout << "Barco Pasajero" << std::endl << std::endl;
+
+                            std::cout << "- Ingrese id: ";
+                            std::cin >> idBarco;
+
+                            std::cout << "- Ingrese nombre: ";
+                            std::cin >> nombreBarco;
+
+                            std::cout << "- Ingrese cantidad de pasajeros: ";
+                            std::cin >> cantPasajeros;
+
+                            std::cout << "\nTamaño del barco:\n- 1: bote\n- 2: crucero\n- 3: galeon\n- 4: transatlantico" << std::endl;
+                            std::cout << "- Ingrese el tamaño (1, 2, 3 o 4): ";
+                            std::cin >> tamanio;
+
+                            TipoTamanio tipo = static_cast<TipoTamanio>(tamanio);
+
+                            DtBarcoPasajero pasajero = DtBarcoPasajero(idBarco, nombreBarco, cantPasajeros, tipo);
+                            
+                            try
+                            {   
+                                agregarBarco(pasajero);
+                                std::cout << "\nSe ha agregado el barco con id " << idBarco << " correctamente!" << std::endl;
+                            }
+                            catch (std::invalid_argument& error)
+                            {
+                                std::cout << "\n" << error.what() << std::endl;
+                            }
                         }
-                        
                     }
-                    else if (opB == 2)
+                    else 
                     {
-                        system("clear");
-
-                        int cantPasajeros;
-                        int tamanio;
-
-                        std::cout << "Barco Pasajero" << std::endl << std::endl;
-
-                        std::cout << "Ingrese id: ";
-                        std::cin >> idBarco;
-
-                        std::cout << "Ingrese nombre: ";
-                        std::cin >> nombreBarco;
-
-                        std::cout << "Ingrese cantidad de pasajeros: ";
-                        std::cin >> cantPasajeros;
-
-                        std::cout << "Ingrese el tamanio del barco(1: bote, 2: crucero, 3: galeon, 4: transatlantico): ";
-                        std::cin >> tamanio;
-
-                        TipoTamanio tipo = static_cast<TipoTamanio>(tamanio);
-
-                        DtBarcoPasajero pasajero = DtBarcoPasajero(idBarco, nombreBarco, cantPasajeros, tipo);
-                        
-                        try
-                        {   
-                            agregarBarco(pasajero);
-                            std::cout << "\nSe ha agregado el barco con id " << idBarco << " correctamente!" << std::endl;
-                        }
-                        catch(std::invalid_argument& error)
-                        {
-                            std::cout << "\n" << error.what() << std::endl;
-                            std::cout << "\nVuelva a intentar" << std::endl;
-                        }
+                        std::cout << "La lista de barcos esta llena.\n" << std::endl;
                     }
-                    
+
+                    presEnter();
                     break;
                 }
 
@@ -223,23 +255,23 @@ void menu()
 
                     DtPuerto** lista = listarPuerto(cantP);
 
-                    if(cantP == 0)
+                    if (cantP == 0)
                     {
                         std::cout << "\nNo existen puertos ingresados" << std::endl; 
                     }
                     else
                     {
-                        for(int i = 0; i < cantP; i++)
+                        for (int i = 0; i < cantP; i++)
                         {
-                            std::cout << "-----------------------\n" << std::endl;
+                            std::cout << "---------------------------------\n" << std::endl;
                             std::cout << *lista[i] << std::endl;
+                            std::cout << "---------------------------------\n" << std::endl;
                         }
                     }
 
-                    sleep(5);
+                    presEnter();
+                    break;
                 }
-                break;
-
             case 4: //Agregar Arribo
                 {
                     system("clear");
@@ -267,26 +299,27 @@ void menu()
                     std::cout << "Mes: ";
                     std::cin >> mes;
 
-                    std::cout << "Anio: ";
+                    std::cout << "Año: ";
                     std::cin >> anio;
 
                     std::cout << "- Ingrese carga de despacho: ";
                     std::cin >> cargaDespacho;
 
+                    system("clear");
+                    
                     try
                     {
                         agregarArribo(idPuerto, idBarco, DtFecha(dia, mes, anio), cargaDespacho);
                         std::cout << "\nSe ha agregado el arribo correctamente!" << std::endl;
                     }
-                    catch(std::invalid_argument& error)
+                    catch (std::invalid_argument& error)
                     {
                         std::cout << "\n" << error.what() << std::endl;
-                        std::cout << "\nVuelva a intentar" << std::endl;
                     }
 
-                    sleep(6);
+                    presEnter();
+                    break;
                 }
-                break;
 
             case 5: //obtenerInfoArribosEnPuerto
                 {
@@ -296,11 +329,13 @@ void menu()
                     int cantArribos; 
                     DtArribo** arrayArribos;
 
+                    std::cout << "OBTENER INFO ARRIBOS \n- Ingrese idPuerto: ";
+                    std::cin >> idPuerto;
+
+                    system("clear");
+                    
                     std::cout << "OBTENER INFO ARRIBOS" << std::endl << std::endl;
 
-                    std::cout << "- Ingrese idPuerto: ";
-                    std::cin >> idPuerto;
-                    
                     try
                     {
                         arrayArribos = obtenerInfoArribosEnPuerto(idPuerto, cantArribos);
@@ -313,7 +348,9 @@ void menu()
                         {
                             for (int i = 0; i < cantArribos; i++)
                             {
+                                std::cout << "---------------------------------\n" << std::endl;
                                 std::cout << *arrayArribos[i] << std::endl;
+                                std::cout << "---------------------------------\n" << std::endl;
                             }
                         }
                     }
@@ -323,9 +360,9 @@ void menu()
                         std::cout << "\nVuelva a intentar" << std::endl;
                     }
 
-                    sleep(6);
+                    presEnter();
+                    break;
                 }
-                break;
 
             case 6: //eliminarArribos
                 {
@@ -343,23 +380,22 @@ void menu()
                     std::cout << "Dia: ";
                     std::cin >> dia;
                     
-                    std::cout << "Des: ";
+                    std::cout << "Mes: ";
                     std::cin >> mes;
 
-                    std::cout << "Anio: ";
+                    std::cout << "Año: ";
                     std::cin >> anio;
 
-                                        
                     try
                     {
                         eliminarArribos(idPuerto, DtFecha(dia, mes, anio));
                     }
-                    catch(std::invalid_argument& error)
+                    catch (std::invalid_argument& error)
                     {
                         std::cout << "\n" << error.what() << std::endl;
-                        std::cout << "\nVuelva a intentar" << std::endl;
                     }
-                    
+
+                    presEnter();
                     break;
                 }
             case 7: //Listar Barcos
@@ -372,7 +408,7 @@ void menu()
 
                     DtBarco ** barcolistado = listarBarcos(barco);
 
-                    if(barco == 0)
+                    if (barco == 0)
                     {
                         std::cout << "\nNo hay ningun barco ingresado" << std::endl;
                     }
@@ -382,37 +418,38 @@ void menu()
                         {
                             DtBarcoPasajero * pasa = dynamic_cast<DtBarcoPasajero*>(barcolistado[i]);
 
-                            if(pasa == NULL)
+                            if (pasa == NULL)
                             {
                                 DtBarcoPesquero * pesq = dynamic_cast<DtBarcoPesquero*>(barcolistado[i]);
 
-                                std::cout << "-----------------------\n" << std::endl;
+                                std::cout << "---------------------------------\n" << std::endl;
                                 std::cout << *pesq << std::endl;
+                                std::cout << "---------------------------------\n" << std::endl;
                             }
                             else
                             {
-                                std::cout << "-----------------------\n" << std::endl;
+                                std::cout << "---------------------------------\n" << std::endl;
                                 std::cout << *pasa << std::endl;
+                                std::cout << "---------------------------------\n" << std::endl;
                             }
                         }
                     }                      
                     
-                    sleep(6);
-
+                    presEnter();
                     break;
-                }             
+                }
             
             case 8: //Salir
                 {
-                    system("exit");
                     std::cout << "Saliendo.." << std::endl;
+                    sleep(2);
 
                     break;
                 }
             default: //Opcion incorrecta
-
-                std::cout<<"Por favor, introduzca una opcion valida."<<std::endl;
-                sleep(3);
+            
+                std::cout << "\n" << "Por favor, introduzca una opcion valida." << std::endl;
+                sleep(1);
 
                 break;
         }
@@ -420,31 +457,15 @@ void menu()
     while (opcion != 8);
 }
 
-
-
-
-
-
-
-
-
-
-int main()
-{   
-    menu();
-    return 0;
+void presEnter()
+{
+    std::string enter;
+    std::getline(std::cin, enter);
+    std::cout << "Presiona enter para continuar...";
+    std::getline(std::cin, enter);
 }
 
-
-
-
-
-
-
-
-
-
-///////////////OPERACIONES AUXILIARES///////////////////////////
+///////////////OPERACIONES AUXILIARES////////////////
 
 Puerto* existePuerto(std::string idPuerto)
 {
@@ -476,15 +497,23 @@ void efectuarCarga(Barco* barco, float cargaDespacho)
 {
     BarcoPesquero* pesq = dynamic_cast<BarcoPesquero*>(barco);
 
-    if (pesq == NULL) return;
+    if (pesq == NULL)
+    {
+        if (cargaDespacho != 0)
+        {
+            throw std::invalid_argument("Un barco pasajero no puede tener carga.");
+        }
+
+        return;
+    }
 
     if (cargaDespacho > 0)
     {
         pesq -> arribar(cargaDespacho);
     }
     else //Si el valor de carga que se despacha es negativo o 0
-    {   
-        pesq -> partir(-cargaDespacho);
+    {
+        pesq -> partir(cargaDespacho);
     }
 }
 
@@ -514,7 +543,7 @@ Barco * convertirBarco(DtBarco& barco)
 
 void agregarPuerto(std::string id, std::string nombre, DtFecha fechaCreacion)
 {
-    if(existePuerto(id) != NULL)
+    if (existePuerto(id) != NULL)
     {
         throw std::invalid_argument("Ya existe el puerto con id " + id);
     }
@@ -536,7 +565,7 @@ void agregarBarco(DtBarco& barco)
         }
     }
 
-    barcos.bar[barcos.cantBarcos] = convertirBarco(barco); //Necesario verificar array no completo
+    barcos.bar[barcos.cantBarcos] = convertirBarco(barco);
     barcos.cantBarcos++;
 }
 
@@ -567,12 +596,16 @@ void agregarArribo(std::string idPuerto, std::string idBarco, DtFecha fecha, flo
         throw std::invalid_argument("No se pudo agregar un arribo.");
     }
 
+    if (puerto -> getCantArribos() >= MAX_ARRIBO)
+    {
+        throw std::invalid_argument("Cantidad de arribos en el puerto excedida. ");
+    }
+
     efectuarCarga(barco, cargaDespacho);
 
     Arribo * arribo = new Arribo(fecha, cargaDespacho, barco);
 
-    puerto -> agregarArribos(arribo); 
-
+    puerto -> agregarArribos(arribo);
 }
 
 DtArribo** obtenerInfoArribosEnPuerto(std::string idPuerto, int& cantArribos)
@@ -594,28 +627,33 @@ DtArribo** obtenerInfoArribosEnPuerto(std::string idPuerto, int& cantArribos)
 void eliminarArribos(std::string idPuerto, DtFecha fecha)
 {
     Puerto * puerto = existePuerto(idPuerto);
-    Arribo ** arrayArribo;
-    
+
     if (puerto == NULL)
     {
         throw std::invalid_argument("No existe un puerto con id " + idPuerto);
-        return;
     }
 
-    arrayArribo = puerto -> getArribos();
-    
+    Arribo ** arrayArribo = puerto -> getArribos();
+
+    if (puerto -> getCantArribos() == 0)
+    {
+        throw std::invalid_argument("No existen arribos en el puerto: " + idPuerto);
+    }
+
     for (int i = 0; i < puerto -> getCantArribos(); i++)
     {
         if (arrayArribo[i] -> getFecha() == fecha)
         {
-            for (int j = i; j < puerto -> getCantArribos() - 1; j++)
+            delete arrayArribo[i];
+
+            for (int arribo = i; arribo < puerto -> getCantArribos() - 1; arribo++)
             {
-                arrayArribo[j] = arrayArribo[j + 1];
+                arrayArribo[arribo] = arrayArribo[arribo + 1];   
             }
+
+            puerto -> setCantArribos(puerto -> getCantArribos() - 1);
         }
     }
-
-    puerto -> setCantArribos(puerto -> getCantArribos() - 1);
 }
 
 DtBarco** listarBarcos(int& cantBarcos)
@@ -649,4 +687,88 @@ DtBarco** listarBarcos(int& cantBarcos)
     }
     
     return dtbarcos;
+}
+
+void cargarDatos()
+{
+    try
+    {
+        //BARCOS
+        int tamanio = 1;
+        
+        TipoTamanio tipo = static_cast<TipoTamanio>(tamanio); 
+
+        DtBarcoPasajero pasa = DtBarcoPasajero("10", "titanic", 341, tipo);
+        
+        agregarBarco(pasa);
+
+        tamanio = 2;
+        
+        tipo = static_cast<TipoTamanio>(tamanio); 
+
+        pasa = DtBarcoPasajero("11", "concordia", 241, tipo);
+        
+        agregarBarco(pasa);
+
+        tamanio = 3;
+        
+        tipo = static_cast<TipoTamanio>(tamanio); 
+
+        pasa = DtBarcoPasajero("12", "diamond princess", 312, tipo);
+        
+        agregarBarco(pasa);
+
+        DtBarcoPesquero pes = DtBarcoPesquero("13", "santa maria", 234, 10);
+        
+        agregarBarco(pes);
+
+        pes = DtBarcoPesquero("14", "pinta", 243, 5);
+
+        agregarBarco(pes);
+
+        //PUERTOS
+
+        DtFecha fecha = DtFecha(1, 2, 1910);
+
+        agregarPuerto("100", "MVD", fecha);
+
+        fecha = DtFecha(15, 6, 1905);
+
+        agregarPuerto("101", "BSAS", fecha);
+
+        fecha = DtFecha(19, 12, 1900);
+
+        agregarPuerto("102", "NYC", fecha);
+
+        //ARRIBOS
+        
+        fecha = DtFecha(9, 1, 2020);
+
+        agregarArribo("100", "10", fecha, 0);
+
+        fecha = DtFecha(12, 2, 2021);
+
+        agregarArribo("100", "11", fecha, 0);
+
+        fecha = DtFecha(20, 4, 2020);
+
+        agregarArribo("100", "13", fecha, 2);
+
+        fecha = DtFecha(21, 4, 2020);
+
+        agregarArribo("101", "14", fecha, -52);
+    }
+    catch (std::invalid_argument& e)
+    {
+        std::cerr << e.what() << std::endl;
+    }
+}
+
+
+int main()
+{
+    cargarDatos();
+    menu();
+    
+    return 0;
 }

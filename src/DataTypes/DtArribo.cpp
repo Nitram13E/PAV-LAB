@@ -34,19 +34,7 @@ std::ostream& operator << (std::ostream& salida, DtArribo arr)
 {
     std::cout << arr.getFecha();
     std::cout << "- Carga: " << arr.getCarga() << std::endl;
+    std::cout << *arr.getBarco() << std::endl;
     
-    DtBarcoPasajero* dtpas = dynamic_cast<DtBarcoPasajero*>(arr.getBarco());
-
-    if(dtpas != NULL)
-    {
-        std::cout << *dtpas;
-    } 
-    else
-    {
-        DtBarcoPesquero* dtpes = dynamic_cast<DtBarcoPesquero*>(arr.getBarco());
-
-        std::cout << *dtpes;
-    } 
-
     return salida;
 }

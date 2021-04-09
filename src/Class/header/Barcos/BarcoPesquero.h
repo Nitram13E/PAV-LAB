@@ -1,7 +1,6 @@
 #ifndef BARCOPESQUERO
 #define BARCOPESQUERO
 
-#define MAX_CARGA 50
 #include <iostream>
 #include "../Barco.h"
 #include "../../../DataTypes/header/Barcos/DtBarcoPesquero.h"
