@@ -1,0 +1,12 @@
+a.¿Cuáles son las dependencias circulares que fueron necesarias solucionar para que el programa compile?
+
+
+
+b.¿Qué es forward declaration?
+
+Forward declaration es la declaracion previa de la sintaxis o de la firma de una clase, variable, funcion, entre otros, antes de su uso.
+Esta dice al compilador acerca de la existencia de una entidad antes de siquiera definirla, de esta manera puede ser usada por otras entidades que fueron definidas antes que ella.
+
+
+Bibliografia:
+https://www.geeksforgeeks.org/what-are-forward-declarations-in-c/ 
