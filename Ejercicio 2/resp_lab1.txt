@@ -1,0 +1,18 @@
+a. ¿Cuáles son las dependencias circulares que fueron necesarias solucionar para que el programa compile?
+
+Las dependencias funcionales que se solucionaron fueron:
+    - en A.h se importaron las clases B y C y se realizaron las forward declartion respectivas para las clases B y C
+    - en B.h se importaron las clases A y C y se realizaron las forward declartion respectivas para las clases A y C
+    - en C.h se importaron las clases A y B y se realizaron las forward declartion respectivas para las clases A y B
+
+Esto es para lograr que cada clase contenga instancias de cada una de sus clases hermanas y por ende estar relacionadas entre si.
+
+b. ¿Qué es forward declaration?
+
+Forward declaration es la declaracion previa de la sintaxis o de la firma de una clase, variable, funcion, entre otros, antes de su uso.
+Esta dice al compilador acerca de la existencia de una entidad antes de siquiera definirla, de esta manera puede ser usada por otras entidades
+que fueron definidas antes que ella.
+
+
+Bibliografia:
+https://www.geeksforgeeks.org/what-are-forward-declarations-in-c/

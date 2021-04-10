@@ -71,7 +71,9 @@ void menu()
     do
     {
         system("clear");
-        std::cout << "Bienvenido! " << std::endl;
+        std::cout << "--------------------------------------------" << std::endl;
+        std::cout << "\t\tBienvenido!" << std::endl;
+        std::cout << "--------------------------------------------" << std::endl;
         std::cout << "1) Agregar puerto " << std::endl;
         std::cout << "2) Agregar barco " << std::endl;
         std::cout << "3) Listar puerto " << std::endl;
@@ -220,13 +222,20 @@ void menu()
                             std::cout << "\nTamaño del barco:\n- 1: bote\n- 2: crucero\n- 3: galeon\n- 4: transatlantico" << std::endl;
                             std::cout << "- Ingrese el tamaño (1, 2, 3 o 4): ";
                             std::cin >> tamanio;
+                            
+                            if (tamanio < 1 || tamanio > 4)
+                            {
+                                std::cout << "\nTamaño fuera de rango. " << std::endl;
+                                presEnter();
+                                break;
+                            }
 
                             TipoTamanio tipo = static_cast<TipoTamanio>(tamanio);
 
                             DtBarcoPasajero pasajero = DtBarcoPasajero(idBarco, nombreBarco, cantPasajeros, tipo);
                             
                             try
-                            {   
+                            {
                                 agregarBarco(pasajero);
                                 std::cout << "\nSe ha agregado el barco con id " << idBarco << " correctamente!" << std::endl;
                             }
@@ -441,16 +450,17 @@ void menu()
             
             case 8: //Salir
                 {
-                    std::cout << "Saliendo.." << std::endl;
+                    std::cout << "\nSaliendo.." << std::endl;
                     sleep(2);
 
                     break;
                 }
             default: //Opcion incorrecta
             
-                std::cout << "\n" << "Por favor, introduzca una opcion valida.";
-                sleep(1);
-
+                std::cout << "\n" << "Por favor, introduzca una opcion valida." << std::endl;
+                presEnter();
+                system("clear");
+                
                 break;
         }
     }
