@@ -235,7 +235,7 @@ void menu()
                             DtBarcoPasajero pasajero = DtBarcoPasajero(idBarco, nombreBarco, cantPasajeros, tipo);
                             
                             try
-                            {   
+                            {
                                 agregarBarco(pasajero);
                                 std::cout << "\nSe ha agregado el barco con id " << idBarco << " correctamente!" << std::endl;
                             }
@@ -457,9 +457,10 @@ void menu()
                 }
             default: //Opcion incorrecta
             
-                std::cout << "\n" << "Por favor, introduzca una opcion valida.";
-                sleep(1);
-
+                std::cout << "\n" << "Por favor, introduzca una opcion valida." << std::endl;
+                presEnter();
+                system("clear");
+                
                 break;
         }
     }
