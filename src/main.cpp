@@ -222,6 +222,13 @@ void menu()
                             std::cout << "\nTamaño del barco:\n- 1: bote\n- 2: crucero\n- 3: galeon\n- 4: transatlantico" << std::endl;
                             std::cout << "- Ingrese el tamaño (1, 2, 3 o 4): ";
                             std::cin >> tamanio;
+                            
+                            if (tamanio < 1 || tamanio > 4)
+                            {
+                                std::cout << "\nTamaño fuera de rango. " << std::endl;
+                                presEnter();
+                                break;
+                            }
 
                             TipoTamanio tipo = static_cast<TipoTamanio>(tamanio);
 
