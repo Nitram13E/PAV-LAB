@@ -3,8 +3,6 @@
 #define MAX_ARRIBO 30
 #define CANT_ARRIBOS 0
 
-#include <ostream>
-
 #include "Arribo.h"
 #include "../../DataTypes/header/DtArribo.h"
 

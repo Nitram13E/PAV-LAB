@@ -71,7 +71,9 @@ void menu()
     do
     {
         system("clear");
-        std::cout << "Bienvenido! " << std::endl;
+        std::cout << "--------------------------------------------" << std::endl;
+        std::cout << "\t\tBienvenido!" << std::endl;
+        std::cout << "--------------------------------------------" << std::endl;
         std::cout << "1) Agregar puerto " << std::endl;
         std::cout << "2) Agregar barco " << std::endl;
         std::cout << "3) Listar puerto " << std::endl;
@@ -441,7 +443,7 @@ void menu()
             
             case 8: //Salir
                 {
-                    std::cout << "Saliendo.." << std::endl;
+                    std::cout << "\nSaliendo.." << std::endl;
                     sleep(2);
 
                     break;
