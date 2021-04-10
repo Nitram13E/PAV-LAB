@@ -17,11 +17,30 @@
 			"problemMatcher": [
 				"$gcc"
 			],
+			"group": "build",
+			"detail": "compilador: /bin/g++"
+		},
+		{
+			"type": "cppbuild",
+			"label": "C/C++: g++ compilar archivo activo",
+			"command": "/usr/bin/g++",
+			"args": [
+				"-g",
+				"${file}",
+				"-o",
+				"${fileDirname}/${fileBasenameNoExtension}"
+			],
+			"options": {
+				"cwd": "${workspaceFolder}"
+			},
+			"problemMatcher": [
+				"$gcc"
+			],
 			"group": {
 				"kind": "build",
 				"isDefault": true
 			},
-			"detail": "compilador: /bin/g++"
+			"detail": "compilador: /usr/bin/g++"
 		}
 	]
 }
