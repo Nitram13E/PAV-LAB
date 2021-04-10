@@ -5,8 +5,6 @@
 #include "header/C.h"
 
 
-
-
 int main()
 {
     A * a = new A(1, NULL, NULL);
